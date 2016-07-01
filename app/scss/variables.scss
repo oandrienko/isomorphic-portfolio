@@ -1,0 +1,17 @@
+/**
+*  GLOBAL VARIABLES
+*/
+
+@import './vendor/fonts.scss';
+
+/* Media Query grid snap sizes */
+$desktop-size: 1024px;
+$tablet-size: 768px;
+$mobile-lg-size: 480px;
+$mobile-sm-size: 320px;
+
+/* Primary font-family style */
+$primaryFont: 'adobe-clean', sans-serif;
+//$primaryFont: 'Helvetica', sans-serif;
+// $secondaryFont: 'brandon-grotesque', sans-serif;
+// $thirdFont: 'minion-pro-display', sans-serif;
