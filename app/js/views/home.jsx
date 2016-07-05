@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import 'appRoot/scss/views/home.scss';
+// import '../../scss/views/home.scss';
 
 export default class Home extends React.Component {
 	constructor(pros) {
@@ -13,77 +13,81 @@ export default class Home extends React.Component {
 
 		$('#home-video').get(0).play();
 
+		/**
+		* Home Background Fading and parallax animation
+		*/
+		$(window).on('scroll load', this.renderAnimation_bgFading);
+
+		/**
+		* Home Background Image Sizing
+		*/
+		$(window).on('resize load', this.renderAnimation_bgSizing); 
+	}
+	renderAnimation_bgSizing() {
+
+		var 
+		bgHeight,
+		bgWidth,
+		bgElements = $('.section__background img');
+		bgElements.each(function(i, val) {
+			if ($(window).width() > $(window).height()) {
+				bgHeight = 'auto';
+				bgWidth = $(window).width();
+			} else {
+				bgHeight = $(window).height()-75;
+				bgWidth = 'auto';
+			}
+			$(this).css({
+				'height' : bgHeight*1.2,
+				'width' : bgWidth*1.2
+			});
+		});
+
+	}
+	renderAnimation_bgFading() {
+
 		var 
 		st,
 		height,
 		transform,
 		mainSections = $('.m-section'),
 		parallaxElements = $('.mainVideo__overlay, .section__background.change');
-		$(window).on('scroll',function() {
+		mainSections.each(function(i, val) {
+			if ( $(window).scrollTop() >= $(this).offset().top-75
+				&& $(window).scrollTop() <= $(this).offset().top+$(this).height()-75 ) {
 
-			mainSections.each(function(i, val) {
-				if ( $(window).scrollTop() >= $(this).offset().top-75
-					&& $(window).scrollTop() <= $(this).offset().top+$(this).height()-75 ) {
+				st = $(window).scrollTop() - i*$(this).height();
+				height = $(this).height();
+				$(this).css({
+					'opacity': Math.pow( 1-st/height , 2),
+				 }); 
 
-					st = $(window).scrollTop() - i*$(this).height();
-					height = $(this).height();
+				transform = ( 200*(st/height) ) ;
+				parallaxElements.eq(i).css({
+					'transform': 'translateY(' + transform +'px)'
+				});
+
+			} else {
+
+				if( $(window).scrollTop() <= $(this).offset().top+$(this).height()-75 ) {
+					// element is below
 					$(this).css({
-						'opacity': Math.pow( 1-st/height , 2),
-					 }); 
-
-					transform = ( 200*(st/height) ) ;
+						'opacity': 1
+				 	}); 
 					parallaxElements.eq(i).css({
-						'transform': 'translateY(' + transform +'px)'
+						'transform': 'translateY(0px)'
 					});
 
 				} else {
-
-					if( $(window).scrollTop() <= $(this).offset().top+$(this).height()-75 ) {
-						// element is below
-						$(this).css({
-							'opacity': 1
-					 	}); 
-						parallaxElements.eq(i).css({
-							'transform': 'translateY(0px)'
-						});
-
-					} else {
-						$(this).css({
-							'opacity': 0
-					 	}); 
-					}
-
+					$(this).css({
+						'opacity': 0
+				 	}); 
 				}
-			}); 
 
-		});
+			}
+		}); 
 
-		/**
-		* Home Background Image Sizing
-		*/
-		var 
-		bgHeight,
-		bgWidth,
-		bgElements = $('.section__background img');
-		$(window).on('resize load', function() {
-
-			bgElements.each(function(i, val) {
-				if ($(window).width() > $(window).height()) {
-					bgHeight = 'auto';
-					bgWidth = $(window).width();
-				} else {
-					bgHeight = $(window).height()-75;
-					bgWidth = 'auto';
-				}
-				$(this).css({
-					'height' : bgHeight*1.2,
-					'width' : bgWidth*1.2
-				});
-			});
-
-		 }); 
 	}
-
 	render() {
 
 		return (

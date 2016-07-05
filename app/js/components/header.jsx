@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-import 'appRoot/scss/components/header.scss';
+// import ContactModal from 'appRoot/js/components/modal.jsx';
+
+// import '../../scss/components/header.scss';
 
 class MainNav extends React.Component {
 	render() {

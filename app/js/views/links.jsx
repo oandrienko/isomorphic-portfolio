@@ -1,6 +1,6 @@
 import React from 'react';
 
-import 'appRoot/scss/views/links.scss';
+// import '../../scss/views/links.scss';
 
 export default class Links extends React.Component {
 	constructor(pros) {

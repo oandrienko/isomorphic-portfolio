@@ -1,20 +1,23 @@
 {
   "name": "resume-site",
   "version": "1.0.0",
-  "description": "Personal resume website to showcase projects",
+  "description": "An isomorphic portfolio website to showcase my projects.",
   "private": false,
   "repository": {
     "type": "git",
-    "url": "https://github.com/oandrienko/spa-resume-site.git"
+    "url": "https://github.com/oandrienko/isomorphic-portfolio"
   },
   "author": "Oles Andrienko",
   "license": "ISC",
   "scripts": {
-    "start": "webpack-dev-server",
-    "build": "webpack"
+    "dev": "webpack -p --config webpack.production.config.js; nodemon --exec babel-node app/server.js",
+    "webpack-dev": "webpack-dev-server",
+    "build": "webpack -p --config webpack.production.config.js; babel --presets es2015 app/server.js --out-file src/server.js;",
+    "start": "node src/server.js"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
+    "babel-cli": "^6.10.1",
     "babel-core": "^6.10.4",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.9.0",
@@ -22,8 +25,10 @@
     "babel-preset-react-hmre": "^1.1.1",
     "clean-webpack-plugin": "^0.1.9",
     "css-loader": "^0.23.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.21.0",
     "node-sass": "^3.8.0",
+    "nodemon": "^1.9.2",
     "npm": "^3.10.3",
     "postcss-loader": "^0.9.1",
     "sass-loader": "^3.2.1",
@@ -32,8 +37,13 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
     "history": "^3.0.0",
     "jquery": "^3.0.0",
+    "mongodb": "^2.1.18",
+    "morgan": "^1.7.0",
+    "nodemailer": "^2.4.2",
     "react": "^15.1.0",
     "react-addons-update": "^15.1.0",
     "react-dom": "^15.1.0",

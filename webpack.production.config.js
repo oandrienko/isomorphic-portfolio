@@ -4,22 +4,27 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+
 const PATHS = {
   root: __dirname,
   app: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'assets/bundles')
 };
 
-//TODO: Add production plugins
+//TODO: figure out how to deal with requiring styling in js files when running node
 
 module.exports = {
   entry: {
+    styles: PATHS.app + '/scss/styles.scss',
     app: PATHS.app + '/js/app',
     vendor: ['react', 'react-dom', 'jquery']
   },
+  target: 'node',
   output: {
     path: PATHS.build,
-    filename: '[name][hash].js'
+    filename: '[name].js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', 'scss', '.json'],
@@ -31,9 +36,9 @@ module.exports = {
   module: {
     loaders: [
       {
-        //for import use from css-loader --> @import "./variables.scss";
+        //loaders: [ExtractTextPlugin.extract('style', 'css')], won't work
         test: /\.scss$/,
-        loader: 'style-loader!css-loader!postcss!sass-loader'
+        loader: ExtractTextPlugin.extract('css!postcss!sass')
       },
       {
         test: /\.jsx$/,
@@ -59,7 +64,25 @@ module.exports = {
     //clean old build files
     new CleanWebpackPlugin([PATHS.build], {
       root: process.cwd()
-    })
+    }),
+    //minify files
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: false
+      },
+      mangle: {
+        except: ['$', 'webpackJsonp']
+      //  keep_fnames: true
+      }
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': '"production"'
+      }
+    }),
+    new ExtractTextPlugin('app.css'),
+    // new webpack.IgnorePlugin(/\.(css|scss)$/),
   ],
   postcss: [
     require('autoprefixer')
@@ -70,9 +93,10 @@ module.exports = {
     inline: true,
     stats: 'errors-only'
   },
-  devtool: 'source-map'
+  devtool: 'eval-source-map'
 };
 
+/* webpack -p --config ./webpack.production.config.js */
 /* webpack --watch */
 /* webpack -p  for minification */
 /*webpack-dev-server --inline --hot for HMR*/

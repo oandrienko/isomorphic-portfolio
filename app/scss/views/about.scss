@@ -35,7 +35,7 @@
       text-align: center;
 
       h2 {
-      	font-size: 10rem;
+      	font-size: 8rem;
       	display: table-cell;
       	vertical-align: middle;
         background: transparent;
@@ -63,4 +63,38 @@
       }
     }
   }
+}
+
+@media screen and (max-width: $desktop-size) { //width: calc(100% - 30px);
+
+  .mainContent__about {
+    .mainContent__aboutContainer {
+      .about__background {
+        width: calc(100% - 30px);
+      }
+      .about__header {
+        h2 {
+          font-size: 6rem;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: $mobile-lg-size) { //width: 100%;
+
+    .mainContent__about {
+    .mainContent__aboutContainer {
+      .about__background {
+        width: 100%;
+      }
+      .about__header {
+        h2 {
+          font-size: 4rem;
+        }
+      }
+    }
+  }
+
 }

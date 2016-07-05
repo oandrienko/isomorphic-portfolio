@@ -1,20 +1,30 @@
 import React from 'react';
 
-import 'appRoot/scss/views/about.scss';
+// import '../../scss/views/about.scss';
 
 export default class About extends React.Component {
-	constructor(pros) {
-		super();
-	}
-	componentDidMount() {
-		console.log('About => componentDidMount');
-	}
-	render() {
-		return (
-			<div className="mainContent__about" role="main">
+    constructor(pros) {
+        super();
+    }
+    componentDidMount() {
+        console.log('About => componentDidMount');
+        $(window).on('scroll load', this.renderEffect);
+        this.renderAnimation();
+    }
+    renderAnimation() {
+        var section = $('.about__content'), st, height;
+        var st = $(window).scrollTop();
+        var height = section.height();
+        $('.about__img').css({
+            'opacity': Math.pow( 1-st/height , 2),
+        });
+    }
+    render() {
+        return (
+            <div className="mainContent__about" role="main">
                 <div className="mainContent__aboutContainer">
 
-               {/* <section className="about__background"></section> */}
+                    <section className="about__background"></section>
                     <section className="about__background m-section about__img"></section>
                     <div className="about__header"><h2>ABOUT ME</h2></div>
                     <section className="about__content">
@@ -33,7 +43,8 @@ export default class About extends React.Component {
 
                 </div>
             </div>
-		);
-	}
+        );
+    }
 }
 
+                   

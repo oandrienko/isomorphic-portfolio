@@ -1,6 +1,6 @@
 import React from 'react';
 
-import 'appRoot/scss/views/projects.scss';
+// import '../../scss/views/projects.scss';
 
 export default class Projects extends React.Component {
 	constructor(pros) {
