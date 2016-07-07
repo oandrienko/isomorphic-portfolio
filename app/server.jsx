@@ -2,7 +2,6 @@
 
 import express from 'express';
 import path from 'path';
-import os from 'os'
 import clc from 'cli-color'
 
 //TODO: submit form to sever to send contact emails
@@ -20,7 +19,7 @@ import titles from './titles'
 
 let app = express();
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, '../templates'));
 
 app.use(morgan('dev'));

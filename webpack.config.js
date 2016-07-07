@@ -18,7 +18,8 @@ module.exports = {
   },
   output: {
     path: PATHS.build,
-    filename: '[name]-[hash].js'
+    filename: '[name]-[hash].js',
+    publicPath: '/assets/bundles/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', 'scss', '.json'],
@@ -50,6 +51,10 @@ module.exports = {
       filename: PATHS.root + '/templates/index.hbs',
       template: PATHS.root + '/templates/base.html'
     }),
+    new HtmlWebpackPlugin({
+      filename: PATHS.root + '/templates/index.html',
+      template: PATHS.root + '/templates/base-dev.html'
+    }),
     //for HMR in dev-server
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
@@ -63,6 +68,8 @@ module.exports = {
     require('autoprefixer')
   ],
   devServer: {
+    contentBase: 'templates',
+    publicPath: '/assets/bundles/',
     historyApiFallback: true,
     hot: true,
     inline: true,
