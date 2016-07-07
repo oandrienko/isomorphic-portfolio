@@ -1,0 +1,199 @@
+/**
+*  'projects' VIEW STYLES
+*/
+
+@import '~stylesRoot/variables.scss';
+
+.mainContent__projects {
+  background: black;
+
+  .mainContent__projectsContainer {
+  	background: black;
+
+    .section__leftContent {
+      position: fixed;
+      width: calc(58.4vw - 22px);
+      height: calc(100vh - 97px);
+      padding: 30px 0 52px;
+      background: black;
+
+      .section__container--detailed {
+        margin-top: 45px;
+
+        .section__projectDetails {
+        	background: black url(/assets/images/work.jpg) no-repeat center;
+
+          .projectDetails__header {
+            display: table;
+            width: 100%;
+            height: calc(100vh - 77px);
+            font-size: 2.5rem;
+
+            .projectDetails__headerTitle {
+              display: table-cell;
+              vertical-align: middle;
+              width: 100%;
+              text-align: center;
+              color: white;
+              padding: 20px;
+		      background: rgba(0, 0, 0, 0.5);
+		      border-radius: 0;
+
+	            .projectDetails__links {
+	               list-style: none;
+	               vertical-align: middle;
+	               width: 100%;
+	               text-align: center;
+	               display: inline-block;
+	               margin: 0;
+	               padding: 0;
+	              
+	               li {
+	               		margin: 20px 0;
+	               }
+
+	            	.projectDetails__button {
+	            		display: block;
+	            		width: 200px;
+	            		color: white;
+	            		font-size: 1.3rem;
+	            		//background: red;
+	            		margin: 0 auto;
+	            		padding: 10px;
+	            		border: solid white 2px;
+	            		border-radius: 10px;
+	            		transition: 0.2s;
+
+	            		&:hover {
+	            			color: orange;
+	            			border-color: orange;
+	            		}
+	            	}
+	            }
+            }
+          }
+        }
+      }
+    }
+
+    .section__rightContent {
+      position: relative;
+      float: right;
+      width: calc(41.6vw - 22px);
+      padding: 30px 0 52px;
+      background: #f7f7f6;
+
+      .section__container--summary {
+        margin-top: 45px;
+
+        .section__allProjects {
+          .allProjects__header {
+            text-align: center;
+            width: 100%;
+            padding: 50px 0;
+            background: #f7f7f6;
+            font-size: 2rem;
+
+            h3 {
+            	font-weight: normal;
+        	}
+          }
+
+          .allProjects__projectList {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+		    padding: 0;
+		    border: 0;
+		    outline: 0;
+		    font-size: 100%;
+		    vertical-align: baseline;
+		    background: 0 0;
+
+            .project {
+              display: block;
+              margin: 0 auto;
+			  width: 55%;
+			  padding: 52px 0 43px;
+			  text-align: left;
+			  border-bottom: 1px solid #dededd;
+			  list-style: none;
+
+
+				.project__title {
+					font-size: 1.55rem;
+				}
+
+				.project__image {
+					width: 100%;
+					height: auto;
+					padding: 20px 0;
+
+					img {
+						width: 100%;
+						height: auto;
+						border-radius: 30px;
+					}
+				}
+
+				.project__description {
+				  padding-bottom: 20px;
+				}
+
+				.project__button {
+				  font-weight: bold;
+				  margin-top: 20px;
+				}
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: $desktop-size) {
+
+  .mainContent__projects {
+  	  .mainContent__projectsContainer {
+    	.section__leftContent {
+    		height: calc(100vh - 77px);
+    		width:  calc(58.4vw - 10px);
+
+			    .section__container--detailed {
+	    			margin-top: 25px;
+	    		}
+    	}
+      }
+  }
+
+}
+
+@media screen and (max-width: $tablet-size) {
+
+  .mainContent__projects {
+  	  .mainContent__projectsContainer {
+
+    	.section__leftContent {
+    		position: relative;
+      		width: 100%;
+      		height: calc(100vh - 95px);
+    		
+      		.section__container--detailed {
+		        margin-top: 25px;
+		    }
+    	}
+
+    	.section__rightContent {
+		  position: relative;
+      	  width: 100%;
+      	  float: none;
+      	  margin: 0 auto;
+	      padding: 30px 0 52px;
+
+	    }
+      }
+  }
+  
+}

@@ -3,6 +3,7 @@ var webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const PATHS = {
   root: __dirname,
@@ -16,9 +17,11 @@ module.exports = {
     app: PATHS.app + '/client',
     vendor: ['react', 'react-dom', 'jquery']
   },
+  target: 'node',
   output: {
     path: PATHS.build,
-    filename: '[name]-[hash].js'
+    filename: '[name]-[hash].js',
+    publicPath: '/assets/bundles/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', 'scss', '.json'],
@@ -32,11 +35,11 @@ module.exports = {
     loaders: [
       {
         test: /\.scss$/,
-        loader: 'style-loader!css-loader!postcss!sass-loader'
+        loader: ExtractTextPlugin.extract('css!postcss!sass'),
       },
       {
         test: /\.jsx$/,
-        loaders: ['babel?presets[]=react,presets[]=es2015,presets[]=react-hmre'],
+        loaders: ['babel?presets[]=react,presets[]=es2015'],
       }
     ]
   },
@@ -50,27 +53,30 @@ module.exports = {
       filename: PATHS.root + '/templates/index.hbs',
       template: PATHS.root + '/templates/base.html'
     }),
-    //for HMR in dev-server
-    new webpack.HotModuleReplacementPlugin({
-      multiStep: true
-    }),
-    //clean old build files
     new CleanWebpackPlugin([PATHS.build], {
       root: process.cwd()
-    })
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: false
+      },
+      mangle: {
+        except: ['$', 'webpackJsonp']
+      }
+    }),
+    new webpack.DefinePlugin({
+      "process.env": {
+        // to require styles with webpack
+        BROWSER: JSON.stringify(true),
+        NODE_ENV: JSON.stringify("production")
+      }
+    }),
+    new ExtractTextPlugin('app-[hash].css')
   ],
   postcss: [
     require('autoprefixer')
-  ],
-  devServer: {
-    historyApiFallback: true,
-    hot: true,
-    inline: true,
-    stats: 'errors-only'
-  },
-  devtool: 'source-map'
+  ]
 };
 
-/* webpack --watch */
-/* webpack -p  for minification */
-/*webpack-dev-server --inline --hot for HMR*/
+/* webpack -p --config ./webpack.production.config.js */

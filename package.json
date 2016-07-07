@@ -1,5 +1,5 @@
 {
-  "name": "resume-site",
+  "name": "isomorphic-portfolio",
   "version": "1.0.0",
   "description": "An isomorphic portfolio website to showcase my projects.",
   "private": false,
@@ -10,10 +10,12 @@
   "author": "Oles Andrienko",
   "license": "ISC",
   "scripts": {
-    "dev": "webpack -p --config webpack.production.config.js; nodemon --exec babel-node app/server.js",
+    "dev": "nodemon --exec babel-node app/server.jsx",
     "webpack-dev": "webpack-dev-server",
-    "build": "webpack -p --config webpack.production.config.js; babel --presets es2015 app/server.js --out-file src/server.js;",
-    "start": "node src/server.js"
+    "clean": "rm -rf build && mkdir build",
+    "bundle": "webpack -p --config webpack.prod.config.js",
+    "build": " babel app --out-dir build --ignore app/styles",
+    "start": "node build/server.js"
   },
   "devDependencies": {
     "autoprefixer": "^6.3.6",
@@ -38,6 +40,7 @@
   },
   "dependencies": {
     "body-parser": "^1.15.2",
+    "cli-color": "^1.1.0",
     "express": "^4.14.0",
     "history": "^3.0.0",
     "jquery": "^3.0.0",
