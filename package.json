@@ -9,6 +9,9 @@
   },
   "author": "Oles Andrienko",
   "license": "ISC",
+  "engines": {
+    "node": "6.2.2"
+  },
   "scripts": {
     "dev": "nodemon --exec babel-node app/server.jsx",
     "webpack-dev": "webpack-dev-server",
