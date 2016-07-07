@@ -133,7 +133,7 @@ var Home = function (_React$Component) {
 																																_react2.default.createElement(
 																																				'video',
 																																				{ id: 'home-video', className: 'mainVideo__video', loop: 'loop', autoplay: 'autoplay' },
-																																				_react2.default.createElement('source', { type: 'video/mp4', src: './assets/images/home.mp4' })
+																																				_react2.default.createElement('source', { type: 'video/mp4', src: './images/home.mp4' })
 																																)
 																												)
 																								),
@@ -155,7 +155,7 @@ var Home = function (_React$Component) {
 																								_react2.default.createElement(
 																												'div',
 																												{ className: 'section__background change' },
-																												_react2.default.createElement('img', { src: './assets/images/circ.jpg' })
+																												_react2.default.createElement('img', { src: './images/circ.jpg' })
 																								),
 																								_react2.default.createElement(
 																												'article',
@@ -173,7 +173,7 @@ var Home = function (_React$Component) {
 																								_react2.default.createElement(
 																												'div',
 																												{ className: 'section__background change' },
-																												_react2.default.createElement('img', { src: './assets/images/work.jpg' })
+																												_react2.default.createElement('img', { src: './images/work.jpg' })
 																								),
 																								_react2.default.createElement(
 																												'article',
@@ -197,7 +197,7 @@ var Home = function (_React$Component) {
 																								_react2.default.createElement(
 																												'div',
 																												{ className: 'section__background change' },
-																												_react2.default.createElement('img', { src: './assets/images/ja_bc3.jpg' })
+																												_react2.default.createElement('img', { src: './images/ja_bc3.jpg' })
 																								),
 																								_react2.default.createElement(
 																												'article',
@@ -221,7 +221,7 @@ var Home = function (_React$Component) {
 																								_react2.default.createElement(
 																												'div',
 																												{ className: 'section__background' },
-																												_react2.default.createElement('img', { className: 'center', src: './assets/images/video-wall.jpg' })
+																												_react2.default.createElement('img', { className: 'center', src: './images/video-wall.jpg' })
 																								),
 																								_react2.default.createElement(
 																												'ul',

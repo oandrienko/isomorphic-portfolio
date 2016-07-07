@@ -18,8 +18,7 @@ module.exports = {
   },
   output: {
     path: PATHS.build,
-    filename: '[name]-[hash].js',
-    publicPath: '/assets/bundles/'
+    filename: '[name].js'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', 'scss', '.json'],
@@ -52,24 +51,24 @@ module.exports = {
       template: PATHS.root + '/templates/base.html'
     }),
     new HtmlWebpackPlugin({
-      filename: PATHS.root + '/templates/index.html',
+      filename: PATHS.root + '/index.html',
       template: PATHS.root + '/templates/base-dev.html'
     }),
     //for HMR in dev-server
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
     }),
-    //clean old build files
-    new CleanWebpackPlugin([PATHS.build], {
-      root: process.cwd()
+    new webpack.DefinePlugin({
+      "process.env": {
+        BROWSER: JSON.stringify(true),
+        NODE_ENV: JSON.stringify("development")
+      }
     })
   ],
   postcss: [
     require('autoprefixer')
   ],
   devServer: {
-    contentBase: 'templates',
-    publicPath: '/assets/bundles/',
     historyApiFallback: true,
     hot: true,
     inline: true,

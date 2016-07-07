@@ -21,7 +21,7 @@ module.exports = {
   output: {
     path: PATHS.build,
     filename: '[name]-[hash].js',
-    publicPath: '/assets/bundles/'
+    publicPath: '/bundles/'
   },
   resolve: {
     extensions: ['', '.js', '.jsx', 'scss', '.json'],

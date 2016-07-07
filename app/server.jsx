@@ -1,5 +1,3 @@
-"use strict";
-
 import express from 'express';
 import path from 'path';
 import clc from 'cli-color'
@@ -23,10 +21,12 @@ app.set('port', process.env.PORT || 8000);
 app.set('views', path.join(__dirname, '../templates'));
 
 app.use(morgan('dev'));
+
+//TODO: submit form to sever to send contact emails
 app.use(bodyParser.urlencoded({'extended': false}));
 app.use(bodyParser.json());
 
-app.use('/assets/',express.static(path.join(__dirname, '../public')));
+app.use(express.static(path.join(__dirname, '../public')));
 
 app.engine('hbs', exphbs.create({
 	layoutsDir: app.get('views')

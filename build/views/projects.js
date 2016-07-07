@@ -128,7 +128,7 @@ var Projects = function (_React$Component) {
                                         _react2.default.createElement(
                                             'div',
                                             { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './assets/images/projects/realtor-suite.jpg' })
+                                            _react2.default.createElement('img', { src: './images/projects/realtor-suite.jpg' })
                                         ),
                                         _react2.default.createElement(
                                             'div',
@@ -156,7 +156,7 @@ var Projects = function (_React$Component) {
                                         _react2.default.createElement(
                                             'div',
                                             { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './assets/images/projects/star-slam.jpg' })
+                                            _react2.default.createElement('img', { src: './images/projects/star-slam.jpg' })
                                         ),
                                         _react2.default.createElement(
                                             'div',
@@ -184,7 +184,7 @@ var Projects = function (_React$Component) {
                                         _react2.default.createElement(
                                             'div',
                                             { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './assets/images/projects/live-in.jpg' })
+                                            _react2.default.createElement('img', { src: './images/projects/live-in.jpg' })
                                         ),
                                         _react2.default.createElement(
                                             'div',
@@ -212,7 +212,7 @@ var Projects = function (_React$Component) {
                                         _react2.default.createElement(
                                             'div',
                                             { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './assets/images/projects/nbk.jpg' })
+                                            _react2.default.createElement('img', { src: './images/projects/nbk.jpg' })
                                         ),
                                         _react2.default.createElement(
                                             'div',

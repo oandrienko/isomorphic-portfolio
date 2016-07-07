@@ -100,7 +100,7 @@ export default class Home extends React.Component {
                         <div className="mainVideo">
                             <div className="mainVideo__container">
                                 <video id="home-video" className="mainVideo__video" loop="loop" autoplay="autoplay" >
-                                    <source type="video/mp4" src="./assets/images/home.mp4"></source>
+                                    <source type="video/mp4" src="./images/home.mp4"></source>
                                     {/* <source type="video/mov" src="ssets/vid/hero_vid.mov"></source> */}
                                 </video>
                             </div>
@@ -114,7 +114,7 @@ export default class Home extends React.Component {
 
                     <section id="aboutBlock" className="m-section">
                         <div className="section__background change">
-                            <img src="./assets/images/circ.jpg"/>
+                            <img src="./images/circ.jpg"/>
                         </div>
                         <article className="section__content section__content--blackText">
                             <p>
@@ -127,7 +127,7 @@ export default class Home extends React.Component {
 
                     <section id="aboutBlock" className="m-section">
                         <div className="section__background change">
-                            <img src="./assets/images/work.jpg"/>
+                            <img src="./images/work.jpg"/>
                         </div>
                         <article className="section__content section__content--blackText right">
                             <p>
@@ -138,7 +138,7 @@ export default class Home extends React.Component {
 
                     <section id="aboutBlock" className="m-section">
                         <div className="section__background change">
-                            <img src="./assets/images/ja_bc3.jpg"/>
+                            <img src="./images/ja_bc3.jpg"/>
                         </div>
                         <article className="section__content section__content--blackText">
                             <p>
@@ -150,7 +150,7 @@ export default class Home extends React.Component {
 
                     <section id="linksBlock" className="m-section">
                         <div className="section__background">
-                            <img className="center" src="./assets/images/video-wall.jpg"/>
+                            <img className="center" src="./images/video-wall.jpg"/>
                         </div>
                         <ul className="section__halfContent">
                             <li className="section__halfContent--link">

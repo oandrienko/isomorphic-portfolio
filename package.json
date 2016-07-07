@@ -14,8 +14,8 @@
   },
   "scripts": {
     "dev": "nodemon --exec babel-node app/server.jsx",
-    "webpack-dev": "webpack-dev-server",
-    "clean": "rm -rf build && mkdir build",
+    "wp-dev": "webpack && webpack-dev-server",
+    "clean": "rm -rf build && mkdir build && rm -f index.html true && rm -rf -f images",
     "bundle": "webpack -p --config webpack.prod.config.js",
     "build": " babel app --out-dir build --ignore app/styles",
     "start": "node build/server.js"

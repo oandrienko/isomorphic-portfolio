@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var _express = require('express');
 
@@ -7,10 +7,6 @@ var _express2 = _interopRequireDefault(_express);
 var _path = require('path');
 
 var _path2 = _interopRequireDefault(_path);
-
-var _os = require('os');
-
-var _os2 = _interopRequireDefault(_os);
 
 var _cliColor = require('cli-color');
 
@@ -49,14 +45,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = (0, _express2.default)();
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 8000);
 app.set('views', _path2.default.join(__dirname, '../templates'));
 
 app.use((0, _morgan2.default)('dev'));
+
+//TODO: submit form to sever to send contact emails
 app.use(_bodyParser2.default.urlencoded({ 'extended': false }));
 app.use(_bodyParser2.default.json());
 
-app.use('/assets/', _express2.default.static(_path2.default.join(__dirname, '../public')));
+app.use(_express2.default.static(_path2.default.join(__dirname, '../public')));
 
 app.engine('hbs', _expressHandlebars2.default.create({
   layoutsDir: app.get('views')
