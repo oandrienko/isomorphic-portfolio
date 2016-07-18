@@ -23,9 +23,9 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', 'scss', '.json'],
     alias: {
-      'stylesRoot': PATHS.styles,
-      'appRoot': PATHS.app,
-      'root': PATHS.root
+      stylesRoot: PATHS.styles,
+      appRoot: PATHS.app,
+      root: PATHS.root
     }
   },
   module: {
@@ -36,6 +36,7 @@ module.exports = {
       },
       {
         test: /\.jsx$/,
+        ignore: /node_module/,
         loaders: ['babel?presets[]=react,presets[]=es2015,presets[]=react-hmre'],
       }
     ]
@@ -47,17 +48,14 @@ module.exports = {
       'window.jQuery': 'jquery'
     }),
     new HtmlWebpackPlugin({
-      filename: PATHS.root + '/templates/index.hbs',
-      template: PATHS.root + '/templates/base.html'
-    }),
-    new HtmlWebpackPlugin({
-      filename: PATHS.root + '/index.html',
+      title: '*HMR* WEBPACK DEV',
       template: PATHS.root + '/templates/base-dev.html'
     }),
     //for HMR in dev-server
     new webpack.HotModuleReplacementPlugin({
       multiStep: true
     }),
+    new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       "process.env": {
         BROWSER: JSON.stringify(true),

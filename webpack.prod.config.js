@@ -26,20 +26,21 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx', 'scss', '.json'],
     alias: {
-      'stylesRoot': PATHS.styles,
-      'appRoot': PATHS.app,
-      'root': PATHS.root
+      stylesRoot: PATHS.styles,
+      appRoot: PATHS.app,
+      root: PATHS.root
     }
   },
   module: {
     loaders: [
       {
         test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('css!postcss!sass'),
+        loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       },
       {
         test: /\.jsx$/,
-        loaders: ['babel?presets[]=react,presets[]=es2015'],
+        exclude: /node_modules/,
+        loader: 'babel'
       }
     ]
   },

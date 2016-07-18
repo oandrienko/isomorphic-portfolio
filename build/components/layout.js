@@ -26,6 +26,8 @@ if (process.env.BROWSER) {
 	require('stylesRoot/components/layout.scss');
 }
 
+//TODO: Add ReactCSSTransitionGroup for animations
+
 var MainLayout = function (_React$Component) {
 	_inherits(MainLayout, _React$Component);
 
@@ -38,7 +40,18 @@ var MainLayout = function (_React$Component) {
 	_createClass(MainLayout, [{
 		key: 'componentDidMount',
 		value: function componentDidMount() {
-			console.log('About => componentDidMount');
+			console.log('MainLayout => componentDidMount');
+		}
+	}, {
+		key: 'childDidChange',
+		value: function childDidChange() {
+			console.log('MainLayout => CHILD DID CHANGE*******');
+		}
+	}, {
+		key: 'componentWillReceiveProps',
+		value: function componentWillReceiveProps(nextProps) {
+			console.log('MainLayout => componentWillReceiveProps');
+			console.log(nextProps);
 		}
 	}, {
 		key: 'render',
@@ -51,7 +64,9 @@ var MainLayout = function (_React$Component) {
 				_react2.default.createElement(
 					'footer',
 					{ className: 'mainFooter' },
-					_react2.default.createElement('a', { className: 'mainFooter__logoLink', href: '#github' })
+					_react2.default.createElement('a', { className: 'mainFooter__logoLink',
+						href: 'https://github.com/oandrienko/isomorphic-portfolio',
+						target: '_blank' })
 				)
 			);
 		}

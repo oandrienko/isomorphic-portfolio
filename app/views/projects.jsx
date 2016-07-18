@@ -1,36 +1,112 @@
 import React from 'react';
+import { Link, withRouter } from 'react-router';
+
+import _projects from './_projects';
 
 if (process.env.BROWSER) {
     require('stylesRoot/views/projects.scss');
 }
 
+//TODO: setup MongoDB with simple API for projects
+
+const ProjectsItem = (props) => (
+    <li className="project">
+        <div className="project__title">
+            <h4>{props.project.name}</h4>
+        </div>
+        <div className="project__image">
+            <img src={props.project.thumbnail}/>
+        </div>
+        <div className="project__description">
+            {props.project.description}
+        </div>
+        <Link 
+            className="project__button" 
+            to={'/projects/' + props.project.slug} 
+            onClick={props.onClick}>Read More</Link>
+    </li>
+);
+
 export default class Projects extends React.Component {
-	constructor(pros) {
-		super();
+	constructor(props) {
+		super(props);
+
+        this.state = {
+            currentProject: props.projects[0],
+            bannerLinks: {}
+        }
 	}
 	componentDidMount() {
 		console.log('Projects => componentDidMount');
+        console.log(this.props);
+
 	}
+
+    changeProjectBanner(projectIndex) {
+        console.log('CHANGE BANNER CHANGE with INDEX: => ' + this.props.projects[projectIndex] );
+
+        if ($(window).width() < 768)
+            $("html, body").animate({ scrollTop: 0 }, 400);
+
+        this.setState({
+            currentProject: this.props.projects[projectIndex]
+        });
+    }
+
+    toggleHover(i) {
+        let newState = {}; 
+        if (this.state.bannerLinks[i])
+            this.state.bannerLinks[i] = !this.state.bannerLinks[i];
+        else 
+            this.state.bannerLinks[i] = true;
+        this.setState({bannerLinks: this.state.bannerLinks});
+    }
+
 	render() {
+
+        let projects = this.props.projects.map( (project, i) => {
+            let boundClick = this.changeProjectBanner.bind(this, i);
+            return (<ProjectsItem project={project} onClick={boundClick} key={i} /> );
+        });
+
+        let links = this.state.currentProject.links.map( (link, i) => {
+            let onHover = this.toggleHover.bind(this, i);
+            let hoverColor = this.state.bannerLinks[i] == true 
+                                ? {color: link.color, borderColor: link.color}
+                                : {color: 'white', borderColor: 'white'};
+            return (
+                <li key={i} 
+                    onMouseEnter={onHover} 
+                    onMouseLeave={onHover}>
+                    <a target="_blank"
+                        href={link.url} 
+                        style={ hoverColor }
+                        className="projectDetails__button info"
+                    >{link.title}</a>
+                </li>
+            );
+        });
+
+        let bannerImage = { 
+            backgroundImage: 'url(' + this.state.currentProject.bgImageUrl + ')'
+        };
+
 		return (
 			<div className="mainContent__projects" role="main">
                 <div className="mainContent__projectsContainer">
 
+                    {/* Left main banner - project summary */}
                     <section className="section__leftContent">
                         <div className="section__container section__container--detailed">
-                            <div className="section__projectDetails">
+                            <div className="section__projectDetails" 
+                                style={ bannerImage }>
 
                                 <div className="projectDetails__header">
                                     <div className="projectDetails__headerTitle">
-                                        <h3>Sample Project Name</h3>
+                                        <h3>{ this.state.currentProject.name }</h3>
                                         <ul className="projectDetails__links">
-	                                        <li>
-	                                            <a href="#" className="projectDetails__button info">Project Information</a>
-	                                        </li>
-	                                        <li>
-	                                            <a href="#" className="projectDetails__button link">Project Link</a>
-	                                        </li>
-                                    	</ul>
+                                        { links }
+                                        </ul>
                                     </div>
                                 </div>
 
@@ -38,41 +114,16 @@ export default class Projects extends React.Component {
                         </div>
                     </section>
 
+                    {/* Right project list - gets all projects */}
                     <section className="section__rightContent">
                         <div className="section__container section__container--summary">
                             <div className="section__allProjects">
-
                                 <div className="allProjects__header">
                                     <h3>Projects</h3>
                                 </div>
-
                                 <ul className="allProjects__projectList">
-                                    <li className="project"  data-url="http://realtorsuite.com" data-img="test.jpg" data-page="realtor-suite">
-                                        <div className="project__title"><h4>Realtor Suite Platform</h4></div>
-                                        <div className="project__image"><img src="./images/projects/realtor-suite.jpg"/></div>
-                                        <div className="project__description">A full scale web and mobile application for residential Realtors to use at open houses. Currently being developed using the Laravel framework for an Alpha release for a team of investors.</div>
-                                        <a href="#" className="project__button">Project Details</a>
-                                    </li>
-                                    <li className="project" data-url="http://apple.com" data-img="test2.jpg" data-page="star-slam">
-                                        <div className="project__title"><h4>Star Slam Game</h4></div>
-                                        <div className="project__image"><img src="./images/projects/star-slam.jpg"/></div>
-                                        <div className="project__description">iOS and Android App “Star Slam”. Built with HTML5 Canvas and Javascript. Was ported to mobile using Cordova and CocoonJS. Has over 500 downloads from around the world through the Appstore and Google Play Store.</div>
-                                        <a href="#" className="project__button">Project Details</a>
-                                    </li>
-                                    <li className="project" data-url="http://liveinchinatown.com" data-img="work.jpg" data-page="none">
-                                        <div className="project__title"><h4>LiveIN Website Network</h4></div>
-                                        <div className="project__image"><img src="./images/projects/live-in.jpg"/></div>
-                                        <div className="project__description">Updated, maintained and contributed to the overall front and backend architecture of the main LiveIN websites.Provided expertise on technical features of the website and business strategy.</div>
-                                        <a href="#" className="project__button">Project Details</a>
-                                    </li>
-                                    <li className="project">
-                                        <div className="project__title" data-url="http://andrienko.co/naturylbornkillers/" data-img="video-wall.jpg" data-page="none"><h4>Naturyl Born Killers Webstore</h4></div>
-                                        <div className="project__image"><img src="./images/projects/nbk.jpg"/></div>
-                                        <div className="project__description">Originally developed as a custom eCommerce mockup for a popular user on Instagram. Built on top of the Community Edition of the Magento eCommerce platform.</div>
-                                        <a href="#" className="project__button">Project Details</a>
-                                    </li>
+                                { projects }
                                 </ul>
-
                             </div>
                         </div>
                     </section>
@@ -82,3 +133,5 @@ export default class Projects extends React.Component {
 		);
 	}
 }
+
+Projects.defaultProps = _projects;

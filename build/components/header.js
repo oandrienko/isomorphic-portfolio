@@ -12,6 +12,10 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
+var _modal = require('./modal');
+
+var _modal2 = _interopRequireDefault(_modal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -19,8 +23,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-// import ContactModal from 'appRoot/js/components/modal';
 
 if (process.env.BROWSER) {
 	require('stylesRoot/components/header.scss');
@@ -52,7 +54,7 @@ var MainNav = function (_React$Component) {
 							null,
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ className: 'mainNav__link mainNav__link--navCenter', to: 'about' },
+								{ className: 'mainNav__link mainNav__link--navCenter', to: '/about' },
 								'About'
 							)
 						),
@@ -61,16 +63,20 @@ var MainNav = function (_React$Component) {
 							null,
 							_react2.default.createElement(
 								_reactRouter.Link,
-								{ className: 'mainNav__link mainNav__link--navCenter', to: 'projects' },
+								{ className: 'mainNav__link mainNav__link--navCenter', to: '/projects' },
 								'Projects'
 							)
 						),
 						_react2.default.createElement(
 							'li',
 							{ id: 'tooltip' },
-							_react2.default.createElement(
+							this.innerWidth < 768 ? _react2.default.createElement(
 								_reactRouter.Link,
-								{ className: 'mainNav__link mainNav__link--navCenter', to: 'links' },
+								{ className: 'mainNav__link mainNav__link--navCenter', to: '/links' },
+								'Links'
+							) : _react2.default.createElement(
+								'a',
+								{ className: 'mainNav__link mainNav__link--navCenter' },
 								'Links'
 							),
 							_react2.default.createElement(
@@ -87,7 +93,7 @@ var MainNav = function (_React$Component) {
 											null,
 											_react2.default.createElement(
 												'a',
-												{ href: '#lindedin', className: 'tooltip__link' },
+												{ href: '#lindedin', target: '_blank', className: 'tooltip__link blue' },
 												'LinkedIn'
 											)
 										),
@@ -96,7 +102,7 @@ var MainNav = function (_React$Component) {
 											null,
 											_react2.default.createElement(
 												'a',
-												{ href: '#github', className: 'tooltip__link' },
+												{ href: 'https://github.com/oandrienko', target: '_blank', className: 'tooltip__link purple' },
 												'Github'
 											)
 										),
@@ -105,7 +111,7 @@ var MainNav = function (_React$Component) {
 											null,
 											_react2.default.createElement(
 												'a',
-												{ href: '#email', className: 'tooltip__link' },
+												{ href: 'mailto:oandrien@uwaterloo.ca', target: '_blank', className: 'tooltip__link orange' },
 												'Email'
 											)
 										)
@@ -119,8 +125,8 @@ var MainNav = function (_React$Component) {
 						{ className: 'mainNav__contact mainNav__contact--navRight' },
 						_react2.default.createElement(
 							'a',
-							{ id: 'mainModal__toggle', className: 'mainNav__contact--link', href: '#modal' },
-							'Contact Bot'
+							{ onClick: this.props.openModal, id: 'mainModal__toggle', className: 'mainNav__contact--link' },
+							'Contact Now'
 						)
 					)
 				),
@@ -195,7 +201,7 @@ var MobileNavMenu = function (_React$Component3) {
 								null,
 								_react2.default.createElement(
 									_reactRouter.Link,
-									{ to: 'about' },
+									{ onClick: this.props.onClick, to: '/about' },
 									'About'
 								)
 							),
@@ -204,7 +210,7 @@ var MobileNavMenu = function (_React$Component3) {
 								null,
 								_react2.default.createElement(
 									_reactRouter.Link,
-									{ to: 'projects' },
+									{ onClick: this.props.onClick, to: '/projects' },
 									'Projects'
 								)
 							),
@@ -213,7 +219,7 @@ var MobileNavMenu = function (_React$Component3) {
 								null,
 								_react2.default.createElement(
 									_reactRouter.Link,
-									{ to: 'links' },
+									{ onClick: this.props.onClick, to: '/links' },
 									'Links'
 								)
 							),
@@ -221,8 +227,8 @@ var MobileNavMenu = function (_React$Component3) {
 								'li',
 								null,
 								_react2.default.createElement(
-									_reactRouter.Link,
-									{ to: 'about' },
+									'a',
+									{ onClick: this.props.openModal },
 									'Connect'
 								)
 							)
@@ -253,27 +259,63 @@ var MainHeader = function (_React$Component4) {
 
 		var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(MainHeader).call(this));
 
-		_this4.state = { isMobileOpen: false };
-		_this4.toggleMobileNav = _this4.toggleMobileNav.bind(_this4);
+		_this4.state = {
+			isMobileOpen: false,
+			modalIsOpen: false
+		};
 		return _this4;
 	}
 
 	_createClass(MainHeader, [{
-		key: 'toggleMobileNav',
-		value: function toggleMobileNav(e) {
-			console.log('Main Header => NewStates:' + !this.state.isMobileOpen);
-			var newState = { isMobileOpen: !this.state.isMobileOpen };
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this5 = this;
+
+			$(window).on('resize', function () {
+				_this5.closeMobileNav();
+			});
+		}
+	}, {
+		key: 'closeMobileNav',
+		value: function closeMobileNav() {
+
+			var newState = {
+				isMobileOpen: false
+			};
 			this.setState(newState);
+		}
+	}, {
+		key: 'toggleMobileNav',
+		value: function toggleMobileNav() {
+			console.log('Main Header => NewStates:' + !this.state.isMobileOpen);
+
+			var newState = {
+				isMobileOpen: !this.state.isMobileOpen
+			};
+			this.setState(newState);
+
 			$('body').toggleClass('no-scroll');
+		}
+	}, {
+		key: 'openModal',
+		value: function openModal() {
+			this.setState({ modalIsOpen: true });
+		}
+	}, {
+		key: 'closeModal',
+		value: function closeModal() {
+			this.setState({ modalIsOpen: false });
 		}
 	}, {
 		key: 'render',
 		value: function render() {
+			var _this6 = this;
+
 			return _react2.default.createElement(
-				'div',
+				'header',
 				null,
 				_react2.default.createElement(
-					'header',
+					'div',
 					{ className: 'mainHeader' },
 					_react2.default.createElement(
 						'div',
@@ -286,15 +328,28 @@ var MainHeader = function (_React$Component4) {
 								{ className: 'mainHeader__mainTitle' },
 								_react2.default.createElement(
 									_reactRouter.Link,
-									{ className: 'mainHeader__mainTitle--link', to: '/' },
+									{ className: 'mainHeader__mainTitle--link', ref: 'logo', onClick: function onClick() {
+											return _this6.closeMobileNav();
+										}, to: '/' },
 									'Oles Andrienko'
 								)
 							)
 						),
-						_react2.default.createElement(MainNav, { onClick: this.toggleMobileNav, mobileState: this.state.isMobileOpen })
+						_react2.default.createElement(MainNav, { openModal: function openModal() {
+								return _this6.openModal();
+							}, onClick: function onClick() {
+								return _this6.toggleMobileNav();
+							}, mobileState: this.state.isMobileOpen })
 					)
 				),
-				_react2.default.createElement(MobileNavMenu, { mobileState: this.state.isMobileOpen })
+				_react2.default.createElement(MobileNavMenu, { openModal: function openModal() {
+						return _this6.openModal();
+					}, onClick: function onClick() {
+						return _this6.toggleMobileNav();
+					}, mobileState: this.state.isMobileOpen }),
+				_react2.default.createElement(_modal2.default, { modalIsOpen: this.state.modalIsOpen, closeModal: function closeModal() {
+						return _this6.closeModal();
+					} })
 			);
 		}
 	}]);

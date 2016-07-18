@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "nodemon --exec babel-node app/server.jsx",
     "wp-dev": "webpack && webpack-dev-server",
-    "clean": "rm -rf build && mkdir build && rm -f index.html true && rm -rf -f images",
+    "clean": "rm -rf build && mkdir build && rm -rf -f images",
     "bundle": "webpack -p --config webpack.prod.config.js",
     "build": " babel app --out-dir build --ignore app/styles",
     "start": "node build/server.js"
@@ -49,7 +49,7 @@
     "jquery": "^3.0.0",
     "mongodb": "^2.1.18",
     "morgan": "^1.7.0",
-    "nodemailer": "^2.4.2",
+    "nodemailer": "^0.7.1",
     "react": "^15.1.0",
     "react-addons-update": "^15.1.0",
     "react-dom": "^15.1.0",

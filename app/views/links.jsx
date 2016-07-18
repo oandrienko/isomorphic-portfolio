@@ -4,28 +4,30 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/links.scss');
 }
 
-export default class Links extends React.Component {
-	constructor(pros) {
-		super();
-	}
-	componentDidMount() {
-		console.log('Links => componentDidMount');
-	}
-	render() {
-		return (
-			<div class="mainContent__links" role="main">
-                <div class="mainContent__linksContainer">
-	                <section class="links__content">
-	                    <div class="links__content--text">
-							<ul className="links__body-links">
-								<li><a href="#lindedin" className="links__link">LinkedIn</a></li>
-								<li><a href="#github" className="links__link">Github</a></li>
-								<li><a href="#email" className="links_link">Email</a></li>
-							</ul>
-	                    </div>
-	                </section>
+export const Links = (props) => (
+	<div className="mainContent__links" role="main">
+        <div className="mainContent__linksContainer">
+            <section className="links__content">
+                <div className="links__content--text">
+					<ul className="links__body-links">
+						<li>
+							<a target="_blank" href="#lindedin" className="links__link">
+								<img src="/images/linkedin-logo.jpg" target="_blank" alt="" />
+							</a>
+						</li>
+						<li>
+							<a target="_blank" href="https://github.com/oandrienko" className="links__link">
+								<img src="/images/github-logo.jpg" target="_blank" alt="" />
+							</a>
+						</li>
+						<li>
+							<a href="mailto:oandrien@uwaterloo.ca" className="links__link">
+								<img src="/images/mail-logo.jpg" target="_blank" alt="" />
+							</a>
+						</li>
+					</ul>
                 </div>
-            </div>
-		);
-	}
-}
+            </section>
+        </div>
+    </div>
+);

@@ -10,6 +10,12 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouter = require('react-router');
+
+var _projects2 = require('./_projects');
+
+var _projects3 = _interopRequireDefault(_projects2);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22,23 +28,115 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/projects.scss');
 }
 
+//TODO: setup MongoDB with simple API for projects
+
+var ProjectsItem = function ProjectsItem(props) {
+    return _react2.default.createElement(
+        'li',
+        { className: 'project' },
+        _react2.default.createElement(
+            'div',
+            { className: 'project__title' },
+            _react2.default.createElement(
+                'h4',
+                null,
+                props.project.name
+            )
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'project__image' },
+            _react2.default.createElement('img', { src: props.project.thumbnail })
+        ),
+        _react2.default.createElement(
+            'div',
+            { className: 'project__description' },
+            props.project.description
+        ),
+        _react2.default.createElement(
+            _reactRouter.Link,
+            {
+                className: 'project__button',
+                to: '/projects/' + props.project.slug,
+                onClick: props.onClick },
+            'Read More'
+        )
+    );
+};
+
 var Projects = function (_React$Component) {
     _inherits(Projects, _React$Component);
 
-    function Projects(pros) {
+    function Projects(props) {
         _classCallCheck(this, Projects);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Projects).call(this));
+        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Projects).call(this, props));
+
+        _this.state = {
+            currentProject: props.projects[0],
+            bannerLinks: {}
+        };
+        return _this;
     }
 
     _createClass(Projects, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
             console.log('Projects => componentDidMount');
+            console.log(this.props);
+        }
+    }, {
+        key: 'changeProjectBanner',
+        value: function changeProjectBanner(projectIndex) {
+            console.log('CHANGE BANNER CHANGE with INDEX: => ' + this.props.projects[projectIndex]);
+
+            if ($(window).width() < 768) $("html, body").animate({ scrollTop: 0 }, 400);
+
+            this.setState({
+                currentProject: this.props.projects[projectIndex]
+            });
+        }
+    }, {
+        key: 'toggleHover',
+        value: function toggleHover(i) {
+            var newState = {};
+            if (this.state.bannerLinks[i]) this.state.bannerLinks[i] = !this.state.bannerLinks[i];else this.state.bannerLinks[i] = true;
+            this.setState({ bannerLinks: this.state.bannerLinks });
         }
     }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
+            var projects = this.props.projects.map(function (project, i) {
+                var boundClick = _this2.changeProjectBanner.bind(_this2, i);
+                return _react2.default.createElement(ProjectsItem, { project: project, onClick: boundClick, key: i });
+            });
+
+            var links = this.state.currentProject.links.map(function (link, i) {
+                var onHover = _this2.toggleHover.bind(_this2, i);
+                var hoverColor = _this2.state.bannerLinks[i] == true ? { color: link.color, borderColor: link.color } : { color: 'white', borderColor: 'white' };
+                return _react2.default.createElement(
+                    'li',
+                    { key: i,
+                        onMouseEnter: onHover,
+                        onMouseLeave: onHover },
+                    _react2.default.createElement(
+                        'a',
+                        { target: '_blank',
+                            href: link.url,
+                            style: hoverColor,
+                            className: 'projectDetails__button info'
+                        },
+                        link.title
+                    )
+                );
+            });
+
+            var bannerImage = {
+                backgroundImage: 'url(' + this.state.currentProject.bgImageUrl + ')'
+            };
+
             return _react2.default.createElement(
                 'div',
                 { className: 'mainContent__projects', role: 'main' },
@@ -53,7 +151,8 @@ var Projects = function (_React$Component) {
                             { className: 'section__container section__container--detailed' },
                             _react2.default.createElement(
                                 'div',
-                                { className: 'section__projectDetails' },
+                                { className: 'section__projectDetails',
+                                    style: bannerImage },
                                 _react2.default.createElement(
                                     'div',
                                     { className: 'projectDetails__header' },
@@ -63,29 +162,12 @@ var Projects = function (_React$Component) {
                                         _react2.default.createElement(
                                             'h3',
                                             null,
-                                            'Sample Project Name'
+                                            this.state.currentProject.name
                                         ),
                                         _react2.default.createElement(
                                             'ul',
                                             { className: 'projectDetails__links' },
-                                            _react2.default.createElement(
-                                                'li',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'a',
-                                                    { href: '#', className: 'projectDetails__button info' },
-                                                    'Project Information'
-                                                )
-                                            ),
-                                            _react2.default.createElement(
-                                                'li',
-                                                null,
-                                                _react2.default.createElement(
-                                                    'a',
-                                                    { href: '#', className: 'projectDetails__button link' },
-                                                    'Project Link'
-                                                )
-                                            )
+                                            links
                                         )
                                     )
                                 )
@@ -113,118 +195,7 @@ var Projects = function (_React$Component) {
                                 _react2.default.createElement(
                                     'ul',
                                     { className: 'allProjects__projectList' },
-                                    _react2.default.createElement(
-                                        'li',
-                                        { className: 'project', 'data-url': 'http://realtorsuite.com', 'data-img': 'test.jpg', 'data-page': 'realtor-suite' },
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__title' },
-                                            _react2.default.createElement(
-                                                'h4',
-                                                null,
-                                                'Realtor Suite Platform'
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './images/projects/realtor-suite.jpg' })
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__description' },
-                                            'A full scale web and mobile application for residential Realtors to use at open houses. Currently being developed using the Laravel framework for an Alpha release for a team of investors.'
-                                        ),
-                                        _react2.default.createElement(
-                                            'a',
-                                            { href: '#', className: 'project__button' },
-                                            'Project Details'
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'li',
-                                        { className: 'project', 'data-url': 'http://apple.com', 'data-img': 'test2.jpg', 'data-page': 'star-slam' },
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__title' },
-                                            _react2.default.createElement(
-                                                'h4',
-                                                null,
-                                                'Star Slam Game'
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './images/projects/star-slam.jpg' })
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__description' },
-                                            'iOS and Android App “Star Slam”. Built with HTML5 Canvas and Javascript. Was ported to mobile using Cordova and CocoonJS. Has over 500 downloads from around the world through the Appstore and Google Play Store.'
-                                        ),
-                                        _react2.default.createElement(
-                                            'a',
-                                            { href: '#', className: 'project__button' },
-                                            'Project Details'
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'li',
-                                        { className: 'project', 'data-url': 'http://liveinchinatown.com', 'data-img': 'work.jpg', 'data-page': 'none' },
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__title' },
-                                            _react2.default.createElement(
-                                                'h4',
-                                                null,
-                                                'LiveIN Website Network'
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './images/projects/live-in.jpg' })
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__description' },
-                                            'Updated, maintained and contributed to the overall front and backend architecture of the main LiveIN websites.Provided expertise on technical features of the website and business strategy.'
-                                        ),
-                                        _react2.default.createElement(
-                                            'a',
-                                            { href: '#', className: 'project__button' },
-                                            'Project Details'
-                                        )
-                                    ),
-                                    _react2.default.createElement(
-                                        'li',
-                                        { className: 'project' },
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__title', 'data-url': 'http://andrienko.co/naturylbornkillers/', 'data-img': 'video-wall.jpg', 'data-page': 'none' },
-                                            _react2.default.createElement(
-                                                'h4',
-                                                null,
-                                                'Naturyl Born Killers Webstore'
-                                            )
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__image' },
-                                            _react2.default.createElement('img', { src: './images/projects/nbk.jpg' })
-                                        ),
-                                        _react2.default.createElement(
-                                            'div',
-                                            { className: 'project__description' },
-                                            'Originally developed as a custom eCommerce mockup for a popular user on Instagram. Built on top of the Community Edition of the Magento eCommerce platform.'
-                                        ),
-                                        _react2.default.createElement(
-                                            'a',
-                                            { href: '#', className: 'project__button' },
-                                            'Project Details'
-                                        )
-                                    )
+                                    projects
                                 )
                             )
                         )
@@ -238,3 +209,6 @@ var Projects = function (_React$Component) {
 }(_react2.default.Component);
 
 exports.default = Projects;
+
+
+Projects.defaultProps = _projects3.default;

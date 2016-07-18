@@ -23,6 +23,10 @@ var _home = require('./views/home');
 
 var _home2 = _interopRequireDefault(_home);
 
+var _links = require('./views/links');
+
+var _links2 = _interopRequireDefault(_links);
+
 var _about = require('./views/about');
 
 var _about2 = _interopRequireDefault(_about);
@@ -31,21 +35,49 @@ var _projects = require('./views/projects');
 
 var _projects2 = _interopRequireDefault(_projects);
 
-var _links = require('./views/links');
-
-var _links2 = _interopRequireDefault(_links);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var routes = exports.routes = _react2.default.createElement(
-	_reactRouter.Route,
-	{ component: _layout2.default },
-	_react2.default.createElement(
-		_reactRouter.Route,
-		{ path: '/' },
-		_react2.default.createElement(_reactRouter.IndexRoute, { component: _home2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'about', component: _about2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'projects', component: _projects2.default }),
-		_react2.default.createElement(_reactRouter.Route, { path: 'links', component: _links2.default })
-	)
-);
+//if(typeof require.ensure !== 'function') require.ensure = function(d, c) { c(require) };
+
+//TODO: require.ensure is returning require as being undefined...
+// Remember to put '.default' for requires for babel 6
+
+var routes = exports.routes = {
+	path: '/',
+	component: _layout2.default,
+	indexRoute: { component: _home2.default },
+	onChange: function onChange(prevState, nextState, replace) {
+		var newPath = nextState.location.pathname;
+		if (!/^\/projects\/[a-zA-Z0-9_.-]*$/.test(newPath)) window.scrollTo(0, 0);
+	},
+	childRoutes: [{
+		path: 'about',
+		// getComponents(nextState, cb) {
+		// 	if (typeof require.ensure == 'function') {
+		//            /* Asynchronous loading of a component that is inside of require.ensure */
+		//        	require.ensure([], (require) => {
+		//        		cb(null, require('./views/about').default);
+		// 		});
+		// 	} else {
+		// 		/* Synchronous loading for server*/
+		// 		cb(null, require('./views/about').default);
+		// 	}
+		// }
+		component: _about2.default
+	}, {
+		path: 'projects(/:name)',
+		// getComponents(nextState, cb) {
+		// 	if (typeof require.ensure == 'function') {
+		//        	require.ensure([], (require) => {
+		//        		cb(null, require('./views/projects').default);
+		//        	});
+		// 	} else {
+		// 		cb(null, require('./views/projects').default);
+		// 	}
+		// }
+		component: _projects2.default
+	}, {
+		path: 'links',
+		component: _links2.default
+	}]
+};

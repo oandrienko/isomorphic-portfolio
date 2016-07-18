@@ -4,16 +4,21 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/about.scss');
 }
 
+//TODO: Remove JQuery dependencies 
+//TODO: Seperate scroll component that wraps ABOUT
+
 export default class About extends React.Component {
     constructor(pros) {
         super();
     }
     componentDidMount() {
         console.log('About => componentDidMount');
-        $(window).on('scroll load', this.renderEffect);
+        $(window).on('scroll load', this.renderAnimation);
+        //window.addEventListener("scroll", this.renderEffect);
         this.renderAnimation();
     }
     renderAnimation() {
+        console.log('ABOUT SCROLL ANIMATION WENT');
         var section = $('.about__content'), st, height;
         var st = $(window).scrollTop();
         var height = section.height();

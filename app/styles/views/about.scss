@@ -22,7 +22,7 @@
     }
 
     .about__img {
-      background: black url(/images/test.jpg) no-repeat center;
+      background: black url(/images/me_sample.jpg) no-repeat center;
     }
 
     .about__header {
@@ -85,16 +85,25 @@
 @media screen and (max-width: $mobile-lg-size) { //width: 100%;
 
     .mainContent__about {
-    .mainContent__aboutContainer {
-      .about__background {
-        width: 100%;
-      }
-      .about__header {
-        h2 {
-          font-size: 4rem;
+      .mainContent__aboutContainer {
+        .about__background {
+          width: 100%;
+        }
+        .about__header {
+          h2 {
+            font-size: 4rem;
+          }
+        }
+        .about__content {
+          width: 100%;
+          .about__content--text {
+
+            p {
+              font-size: 1.2rem;
+            }
+          }
         }
       }
     }
-  }
 
 }

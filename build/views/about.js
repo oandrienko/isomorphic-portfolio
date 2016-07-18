@@ -22,6 +22,9 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/about.scss');
 }
 
+//TODO: Remove JQuery dependencies
+//TODO: Seperate scroll component that wraps ABOUT
+
 var About = function (_React$Component) {
     _inherits(About, _React$Component);
 
@@ -35,12 +38,14 @@ var About = function (_React$Component) {
         key: 'componentDidMount',
         value: function componentDidMount() {
             console.log('About => componentDidMount');
-            $(window).on('scroll load', this.renderEffect);
+            $(window).on('scroll load', this.renderAnimation);
+            //window.addEventListener("scroll", this.renderEffect);
             this.renderAnimation();
         }
     }, {
         key: 'renderAnimation',
         value: function renderAnimation() {
+            console.log('ABOUT SCROLL ANIMATION WENT');
             var section = $('.about__content'),
                 st,
                 height;

@@ -10,7 +10,7 @@
   top: 0;
   right: 0;
   left: 0;
-  z-index: 999;
+  z-index: 997;
   background: white;
 
   .mainHeader__inner {
@@ -48,6 +48,7 @@
       padding: 0 1.25rem;
       font-size: 1.0rem;
       letter-spacing: .2em;
+      cursor: pointer;
 
       &:hover {
         color: grey;
@@ -78,6 +79,7 @@
     height: 100%;
     margin-right: 55px;
     font-weight: 100;
+    cursor: pointer;
   }
 
   .mainNav__contact--link {
@@ -164,6 +166,23 @@
           color: red;
         }
       }
+
+      .blue {
+        &:hover {
+          color: #add8e6;
+        }
+      }
+      .purple {
+        &:hover {
+          color: #e6add8;
+        }
+      }
+      .orange {
+        &:hover {
+          color: #e6bbad;
+        }
+      }
+
     }
   }
 }

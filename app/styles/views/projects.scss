@@ -12,7 +12,7 @@
 
     .section__leftContent {
       position: fixed;
-      width: calc(58.4vw - 22px);
+      width: calc(60vw - 22px);
       height: calc(100vh - 97px);
       padding: 30px 0 52px;
       background: black;
@@ -21,7 +21,9 @@
         margin-top: 45px;
 
         .section__projectDetails {
-        	background: black url(/images/work.jpg) no-repeat center;
+        	background-color: black;
+          background-repeat: none;
+          background-position: center;
 
           .projectDetails__header {
             display: table;
@@ -65,8 +67,8 @@
 	            		transition: 0.2s;
 
 	            		&:hover {
-	            			color: orange;
-	            			border-color: orange;
+	            			color: #d3d3d3;
+	            			border-color: #d3d3d3;
 	            		}
 	            	}
 	            }
@@ -96,7 +98,7 @@
 
             h3 {
             	font-weight: normal;
-        	}
+        	  }
           }
 
           .allProjects__projectList {
@@ -113,37 +115,41 @@
             .project {
               display: block;
               margin: 0 auto;
-			  width: 55%;
-			  padding: 52px 0 43px;
-			  text-align: left;
-			  border-bottom: 1px solid #dededd;
-			  list-style: none;
+      			  width: 55%;
+      			  padding: 52px 0 43px;
+      			  text-align: left;
+      			  border-bottom: 1px solid #dededd;
+      			  list-style: none;
 
 
-				.project__title {
-					font-size: 1.55rem;
-				}
+      				.project__title {
+      					font-size: 1.55rem;
+      				}
 
-				.project__image {
-					width: 100%;
-					height: auto;
-					padding: 20px 0;
+      				.project__image {
+      					width: 100%;
+      					height: auto;
+      					padding: 20px 0;
 
-					img {
-						width: 100%;
-						height: auto;
-						border-radius: 30px;
-					}
-				}
+      					img {
+      						width: 100%;
+      						height: auto;
+      						border-radius: 30px;
+      					}
+      				}
 
-				.project__description {
-				  padding-bottom: 20px;
-				}
+      				.project__description {
+      				  padding-bottom: 20px;
+      				}
 
-				.project__button {
-				  font-weight: bold;
-				  margin-top: 20px;
-				}
+      				.project__button {
+      				  font-weight: bold;
+      				  margin-top: 20px;
+
+                &:hover {
+                  color: grey;
+                }
+      				}
             }
           }
         }
@@ -159,7 +165,7 @@
   	  .mainContent__projectsContainer {
     	.section__leftContent {
     		height: calc(100vh - 77px);
-    		width:  calc(58.4vw - 10px);
+    		width:  calc(60vw - 10px);
 
 			    .section__container--detailed {
 	    			margin-top: 25px;

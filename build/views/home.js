@@ -24,6 +24,9 @@ if (process.env.BROWSER) {
 				require('stylesRoot/views/home.scss');
 }
 
+//TODO: Remove JQuery dependencies
+//TODO: Seperate scroll component that wraps HOME
+
 var Home = function (_React$Component) {
 				_inherits(Home, _React$Component);
 
@@ -39,16 +42,15 @@ var Home = function (_React$Component) {
 												console.log('Home => componentDidMount');
 
 												$('#home-video').get(0).play();
-
-												/**
-            * Home Background Fading and parallax animation
-            */
 												$(window).on('scroll load', this.renderAnimation_bgFading);
-
-												/**
-            * Home Background Image Sizing
-            */
 												$(window).on('resize load', this.renderAnimation_bgSizing);
+												this.renderAnimation_bgSizing();
+												this.renderAnimation_bgFading();
+								}
+				}, {
+								key: 'componentWillUnmount',
+								value: function componentWillUnmount() {
+												console.log('Home => ***componentDidUnmount');
 								}
 				}, {
 								key: 'renderAnimation_bgSizing',
@@ -132,8 +134,8 @@ var Home = function (_React$Component) {
 																																{ className: 'mainVideo__container' },
 																																_react2.default.createElement(
 																																				'video',
-																																				{ id: 'home-video', className: 'mainVideo__video', loop: 'loop', autoplay: 'autoplay' },
-																																				_react2.default.createElement('source', { type: 'video/mp4', src: './images/home.mp4' })
+																																				{ id: 'home-video', className: 'mainVideo__video', loop: 'loop', autoPlay: 'true' },
+																																				_react2.default.createElement('source', { type: 'video/mp4', src: './images/hero_vid.mp4' })
 																																)
 																												)
 																								),
@@ -145,7 +147,7 @@ var Home = function (_React$Component) {
 																												_react2.default.createElement(
 																																'h2',
 																																{ className: 'mainVideo__titleOverlay mainContent__text' },
-																																'Hello, It\'s Nice to Meet you'
+																																'Hello, It\'s Nice to Meet You'
 																												)
 																								)
 																				),
@@ -181,10 +183,10 @@ var Home = function (_React$Component) {
 																												_react2.default.createElement(
 																																'p',
 																																null,
-																																'Whether it\'s buidling with the newest softeware library or keeping up with popular tech trends - I\'m always looking to learn something new. Check out some of my recent ',
+																																'Whether it\'s building with the newest software library or keeping up with popular tech trends - I\'m always looking to learn something new. Check out some of my recent',
 																																_react2.default.createElement(
-																																				'a',
-																																				{ href: '#projects' },
+																																				_reactRouter.Link,
+																																				{ to: '/projects' },
 																																				'Projects'
 																																),
 																																' here on my website.'
@@ -207,8 +209,8 @@ var Home = function (_React$Component) {
 																																null,
 																																'Do you have a project that you need help with? Are you looking for a developer for your latest app idea? Do you need an engineer in training to add to your current team? Let\'s work on something awesome together, ',
 																																_react2.default.createElement(
-																																				'a',
-																																				{ href: '#contact' },
+																																				_reactRouter.Link,
+																																				{ to: '/contact' },
 																																				'Contact Me'
 																																),
 																																'.'

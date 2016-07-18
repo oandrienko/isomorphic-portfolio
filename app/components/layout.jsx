@@ -6,12 +6,22 @@ if (process.env.BROWSER) {
 	require('stylesRoot/components/layout.scss');
 }
 
-export default class MainLayout extends React.Component {
+//TODO: Add ReactCSSTransitionGroup for animations
+
+class MainLayout extends React.Component {
 	constructor(props) {
 		super();
 	}	
 	componentDidMount() {
-		console.log('About => componentDidMount');
+		console.log('MainLayout => componentDidMount');
+
+	}
+	childDidChange() {
+		console.log('MainLayout => CHILD DID CHANGE*******')
+	}
+	componentWillReceiveProps(nextProps) {
+		console.log('MainLayout => componentWillReceiveProps');
+		console.log(nextProps);
 	}
 	render() {
 		return (
@@ -19,9 +29,13 @@ export default class MainLayout extends React.Component {
 				<MainHeader />
 				{this.props.children}
 				<footer className="mainFooter">
-                	<a className="mainFooter__logoLink" href="#github"></a>
+                	<a className="mainFooter__logoLink" 
+                		href="https://github.com/oandrienko/isomorphic-portfolio" 
+                		target="_blank"></a>
             	</footer>
 			</div>
 		);
 	}
 }
+
+export default MainLayout;

@@ -5,6 +5,9 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/home.scss');
 }
 
+//TODO: Remove JQuery dependencies 
+//TODO: Seperate scroll component that wraps HOME
+
 export default class Home extends React.Component {
 	constructor(pros) {
 		super();
@@ -14,17 +17,18 @@ export default class Home extends React.Component {
 		console.log('Home => componentDidMount');
 
 		$('#home-video').get(0).play();
-
-		/**
-		* Home Background Fading and parallax animation
-		*/
 		$(window).on('scroll load', this.renderAnimation_bgFading);
-
-		/**
-		* Home Background Image Sizing
-		*/
-		$(window).on('resize load', this.renderAnimation_bgSizing); 
+		$(window).on('resize load', this.renderAnimation_bgSizing);
+		this.renderAnimation_bgSizing();
+		this.renderAnimation_bgFading();
 	}
+
+	componentWillUnmount() {
+		console.log('Home => ***componentDidUnmount');
+
+	}
+
+
 	renderAnimation_bgSizing() {
 
 		var 
@@ -99,8 +103,8 @@ export default class Home extends React.Component {
                     <section id="introBlock" className="m-section">
                         <div className="mainVideo">
                             <div className="mainVideo__container">
-                                <video id="home-video" className="mainVideo__video" loop="loop" autoplay="autoplay" >
-                                    <source type="video/mp4" src="./images/home.mp4"></source>
+                                <video id="home-video" className="mainVideo__video" loop="loop" autoPlay="true" >
+                                    <source type="video/mp4" src="./images/hero_vid.mp4"></source>
                                     {/* <source type="video/mov" src="ssets/vid/hero_vid.mov"></source> */}
                                 </video>
                             </div>
@@ -108,7 +112,7 @@ export default class Home extends React.Component {
                         <div className="mainVideo__overlay">
                             <div className="mainVideo__colorOverlay"></div>
                             <h2 className="mainVideo__logo"></h2>
-                            <h2 className="mainVideo__titleOverlay mainContent__text">Hello, It's Nice to Meet you</h2>
+                            <h2 className="mainVideo__titleOverlay mainContent__text">Hello, It's Nice to Meet You</h2>
                         </div>
                     </section>
 
@@ -118,9 +122,9 @@ export default class Home extends React.Component {
                         </div>
                         <article className="section__content section__content--blackText">
                             <p>
-                                My name is Oles Andrienko. I'm a
-                                student at the University of Waterloo studying Mechatronics Engineering. I love to work on technology projects that have an emphasis 
-                                on software and business.
+                                My name is Oles Andrienko. I'm a student at the University of Waterloo 
+                                studying Mechatronics Engineering. I love to work on technology projects 
+                                that have an emphasis on software and business.
                             </p>
                         </article>
                     </section>
@@ -131,7 +135,9 @@ export default class Home extends React.Component {
                         </div>
                         <article className="section__content section__content--blackText right">
                             <p>
-                                Whether it's buidling with the newest softeware library or keeping up with popular tech trends - I'm always looking to learn something new. Check out some of my recent <a href="#projects">Projects</a> here on my website.
+                                Whether it's building with the newest software library or keeping up with popular 
+                                tech trends - I'm always looking to learn something new. Check out some of my recent 
+                                <Link to="/projects">Projects</Link> here on my website.
                             </p>
                         </article>
                     </section>
@@ -142,7 +148,9 @@ export default class Home extends React.Component {
                         </div>
                         <article className="section__content section__content--blackText">
                             <p>
-                                Do you have a project that you need help with? Are you looking for a developer for your latest app idea? Do you need an engineer in training to add to your current team? Let's work on something awesome together, <a href="#contact">Contact Me</a>.
+                                Do you have a project that you need help with? Are you looking for a developer for your 
+                                latest app idea? Do you need an engineer in training to add to your current team? Let's work 
+                                on something awesome together, <Link to="/contact">Contact Me</Link>.
                             </p>
                         </article>
                     </section>
