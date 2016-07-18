@@ -10,7 +10,8 @@
   "author": "Oles Andrienko",
   "license": "ISC",
   "engines": {
-    "node": "6.2.2"
+    "node": "6.2.2",
+    "npm": "3.10.5"
   },
   "scripts": {
     "dev": "nodemon --exec babel-node app/server.jsx",
