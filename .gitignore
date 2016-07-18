@@ -1,7 +1,7 @@
 # Folders #
 ######################
-bower_components
-node_modules
+/bower_components
+/node_modules
 .sass-cache
 
 # OS generated files #
@@ -14,3 +14,5 @@ ehthumbs.db
 Thumbs.db
 
 images_new
+
+/*.env
