@@ -94,8 +94,8 @@ var ContactModal = function (_React$Component2) {
 						{ id: 'send-form', onSubmit: function onSubmit(e) {
 								return _this3.onSubmit(e);
 							} },
-						_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Full Name', maxlength: '40' }),
-						_react2.default.createElement('input', { type: 'text', name: 'email', placeholder: 'Your Email', maxlength: '40' }),
+						_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Full Name', maxLength: '40' }),
+						_react2.default.createElement('input', { type: 'text', name: 'email', placeholder: 'Your Email', maxLength: '40' }),
 						_react2.default.createElement('input', { className: 'hidden', type: 'text', name: 'honey-email', value: '' }),
 						_react2.default.createElement('textarea', { name: 'message', placeholder: 'What you\'d like to send yo me.', rows: '5' }),
 						_react2.default.createElement('input', { type: 'submit', value: 'Send Away', id: 'submit-button' })

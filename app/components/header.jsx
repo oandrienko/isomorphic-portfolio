@@ -9,6 +9,7 @@ if (process.env.BROWSER) {
 
 class MainNav extends React.Component {
 	render() {
+			let width = typeof(window) == 'undefined' ? new Object() : window.innerWidth;
 		return (
 			<div>
 
@@ -18,9 +19,9 @@ class MainNav extends React.Component {
 						<li><Link className="mainNav__link mainNav__link--navCenter" to="/projects">Projects</Link></li>
 						<li id="tooltip">
 						{
-							this.innerWidth < 768
-							 	? (<Link className="mainNav__link mainNav__link--navCenter" to="/links">Links</Link>)
-							 	: (<a className="mainNav__link mainNav__link--navCenter">Links</a>)
+							width > 768
+							 	? (<a className="mainNav__link mainNav__link--navCenter">Links</a>)
+							 	: (<Link className="mainNav__link mainNav__link--navCenter" to="/links">Links</Link>)
 						}
 							<div className="mainNav__tooltip">
 							  <span className="mainNav__tooltip--text">
@@ -94,6 +95,8 @@ export default class MainHeader extends React.Component {
 		$(window).on('resize', () => {
 			this.closeMobileNav();
 		});
+
+		console.log(window.innerWidth);
 	}
 
 	closeMobileNav () {

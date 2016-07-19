@@ -51,6 +51,7 @@ module.exports = {
       'window.jQuery': 'jquery'
     }),
     new HtmlWebpackPlugin({
+      favicon: PATHS.root + '/public/images/icons/favicon.ico',
       filename: PATHS.root + '/templates/index.hbs',
       template: PATHS.root + '/templates/base.html'
     }),

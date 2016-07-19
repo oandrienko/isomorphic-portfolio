@@ -12,17 +12,17 @@ const Links = (props) => (
 					<ul className="links__body-links">
 						<li>
 							<a target="_blank" href="#lindedin" className="links__link">
-								<img src="/images/linkedin-logo.jpg" target="_blank" alt="" />
+								<img src="/images/links/linkedin_icon.jpg" target="_blank" alt="" />
 							</a>
 						</li>
 						<li>
 							<a target="_blank" href="https://github.com/oandrienko" className="links__link">
-								<img src="/images/github-logo.jpg" target="_blank" alt="" />
+								<img src="/images/links/github_icon.jpg" target="_blank" alt="" />
 							</a>
 						</li>
 						<li>
 							<a href="mailto:oandrien@uwaterloo.ca" className="links__link">
-								<img src="/images/mail-logo.jpg" target="_blank" alt="" />
+								<img src="/images/links/mail_icon.jpg" target="_blank" alt="" />
 							</a>
 						</li>
 					</ul>

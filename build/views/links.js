@@ -37,7 +37,7 @@ var Links = function Links(props) {
 							_react2.default.createElement(
 								'a',
 								{ target: '_blank', href: '#lindedin', className: 'links__link' },
-								_react2.default.createElement('img', { src: '/images/linkedin-logo.jpg', target: '_blank', alt: '' })
+								_react2.default.createElement('img', { src: '/images/links/linkedin_icon.jpg', target: '_blank', alt: '' })
 							)
 						),
 						_react2.default.createElement(
@@ -46,7 +46,7 @@ var Links = function Links(props) {
 							_react2.default.createElement(
 								'a',
 								{ target: '_blank', href: 'https://github.com/oandrienko', className: 'links__link' },
-								_react2.default.createElement('img', { src: '/images/github-logo.jpg', target: '_blank', alt: '' })
+								_react2.default.createElement('img', { src: '/images/links/github_icon.jpg', target: '_blank', alt: '' })
 							)
 						),
 						_react2.default.createElement(
@@ -55,7 +55,7 @@ var Links = function Links(props) {
 							_react2.default.createElement(
 								'a',
 								{ href: 'mailto:oandrien@uwaterloo.ca', className: 'links__link' },
-								_react2.default.createElement('img', { src: '/images/mail-logo.jpg', target: '_blank', alt: '' })
+								_react2.default.createElement('img', { src: '/images/links/mail_icon.jpg', target: '_blank', alt: '' })
 							)
 						)
 					)

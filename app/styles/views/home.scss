@@ -25,7 +25,9 @@
           overflow: hidden;
           background: white;
 
-          .mainVideo__video {
+          .mainVideo__video,
+          .mainVideo__mobile,
+          .mainVideo__mobile--image {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -59,11 +61,12 @@
         .mainVideo__logo {
           position: relative;
           top: -70px;
-          background-image: url('/images/oa.png');
-          background-size: cover;
-          background-position: center bottom;
+          background-image: url('/images/main_logo.png');
+          background-size: 100% auto;
+          background-repeat: no-repeat;
+          background-position: top;
           height:300px;
-          width:345px;
+          width:425px;
           margin: 0 auto;
         }
 
@@ -199,7 +202,7 @@
             margin: 0 auto;
             width: 13px;
             text-indent: -9999px;
-            background-image: url(/images/icon-arrow.png);
+            background-image: url(/images/icons/arrow_icon.png);
             background-size: 13px 10px;
             opacity: 0;
             position: absolute;

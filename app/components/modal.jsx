@@ -47,8 +47,8 @@ export default class ContactModal extends React.Component {
 
                 <div>
                     <form id="send-form" onSubmit={(e)=>this.onSubmit(e)}>
-                        <input type="text" name="name" placeholder="Full Name" maxlength="40"/>
-                        <input type="text" name="email" placeholder="Your Email" maxlength="40"/>
+                        <input type="text" name="name" placeholder="Full Name" maxLength="40"/>
+                        <input type="text" name="email" placeholder="Your Email" maxLength="40"/>
 
                         <input className="hidden" type="text" name="honey-email" value=""/>
 

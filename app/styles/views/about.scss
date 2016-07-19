@@ -22,7 +22,10 @@
     }
 
     .about__img {
-      background: black url(/images/me_sample.jpg) no-repeat center;
+      background: black url(/images/about_bg.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
     }
 
     .about__header {

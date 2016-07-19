@@ -19,7 +19,7 @@ exports.default = {
     }, {
         name: 'Star Slam Game',
         thumbnail: '/images/projects/star-slam.jpg',
-        bgImageUrl: '/images/projects/star-slam-banner.png',
+        bgImageUrl: '/images/projects/star-slam-banner.jpg',
         description: 'iOS and Android App “Star Slam”. Built with HTML5 Canvas and ' + 'Javascript. Was ported to mobile using Cordova and CocoonJS. Has ' + 'over 500 downloads from around the world through the Appstore and Google Play Store.',
         slug: 'star-slam',
         links: [{

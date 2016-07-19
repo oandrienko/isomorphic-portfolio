@@ -40,6 +40,7 @@ var MainNav = function (_React$Component) {
 	_createClass(MainNav, [{
 		key: 'render',
 		value: function render() {
+			var width = typeof window == 'undefined' ? new Object() : window.innerWidth;
 			return _react2.default.createElement(
 				'div',
 				null,
@@ -70,13 +71,13 @@ var MainNav = function (_React$Component) {
 						_react2.default.createElement(
 							'li',
 							{ id: 'tooltip' },
-							this.innerWidth < 768 ? _react2.default.createElement(
-								_reactRouter.Link,
-								{ className: 'mainNav__link mainNav__link--navCenter', to: '/links' },
-								'Links'
-							) : _react2.default.createElement(
+							width > 768 ? _react2.default.createElement(
 								'a',
 								{ className: 'mainNav__link mainNav__link--navCenter' },
+								'Links'
+							) : _react2.default.createElement(
+								_reactRouter.Link,
+								{ className: 'mainNav__link mainNav__link--navCenter', to: '/links' },
 								'Links'
 							),
 							_react2.default.createElement(
@@ -274,6 +275,8 @@ var MainHeader = function (_React$Component4) {
 			$(window).on('resize', function () {
 				_this5.closeMobileNav();
 			});
+
+			console.log(window.innerWidth);
 		}
 	}, {
 		key: 'closeMobileNav',

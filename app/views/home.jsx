@@ -16,7 +16,9 @@ export default class Home extends React.Component {
 	componentDidMount() {
 		console.log('Home => componentDidMount');
 
-		$('#home-video').get(0).play();
+        if ($('#home-video').get(0))
+		  $('#home-video').get(0).play();
+
 		$(window).on('scroll load', this.renderAnimation_bgFading);
 		$(window).on('resize load', this.renderAnimation_bgSizing);
 		this.renderAnimation_bgSizing();
@@ -95,7 +97,7 @@ export default class Home extends React.Component {
 
 	}
 	render() {
-
+        let width = typeof(window) == 'undefined' ? new Object() : window.innerWidth;
 		return (
 			<div className="mainContent" role="main">
                 <div className="mainContent__container">
@@ -103,10 +105,20 @@ export default class Home extends React.Component {
                     <section id="introBlock" className="m-section">
                         <div className="mainVideo">
                             <div className="mainVideo__container">
-                                <video id="home-video" className="mainVideo__video" loop="loop" autoPlay="true" >
-                                    <source type="video/mp4" src="./images/hero_vid.mp4"></source>
-                                    {/* <source type="video/mov" src="ssets/vid/hero_vid.mov"></source> */}
-                                </video>
+                            {
+                            	width > 768
+                            	? (
+                            		<video id="home-video" className="mainVideo__video" loop="loop" autoPlay="true">
+                                		<source type="video/mp4" src="/images/bg_mainvideo.mp4"></source>
+                                		<source type="video/mp4" src="/images/bg_mainvideo.mov"></source>
+                              		</video>
+                              	)
+                            	: (
+                            		<div className="mainVideo__mobile">
+                            			<img className="mainVideo__mobile--image" src="/images/bg_mainmobile.jpg"/>
+                            		</div>
+                            	)
+                            }
                             </div>
                         </div>
                         <div className="mainVideo__overlay">
@@ -118,7 +130,7 @@ export default class Home extends React.Component {
 
                     <section id="aboutBlock" className="m-section">
                         <div className="section__background change">
-                            <img src="./images/circ.jpg"/>
+                            <img src="/images/bg_circuit.jpg" alt="background engineer electrical hardware"/>
                         </div>
                         <article className="section__content section__content--blackText">
                             <p>
@@ -131,7 +143,7 @@ export default class Home extends React.Component {
 
                     <section id="aboutBlock" className="m-section">
                         <div className="section__background change">
-                            <img src="./images/work.jpg"/>
+                            <img src="/images/bg_engineer.jpg" alt="background engineer mechanical hardware"/>
                         </div>
                         <article className="section__content section__content--blackText right">
                             <p>
@@ -144,7 +156,7 @@ export default class Home extends React.Component {
 
                     <section id="aboutBlock" className="m-section">
                         <div className="section__background change">
-                            <img src="./images/ja_bc3.jpg"/>
+                            <img src="/images/bg_awardgroup.jpg" alt="background award group photo"/>
                         </div>
                         <article className="section__content section__content--blackText">
                             <p>
@@ -158,7 +170,7 @@ export default class Home extends React.Component {
 
                     <section id="linksBlock" className="m-section">
                         <div className="section__background">
-                            <img className="center" src="./images/video-wall.jpg"/>
+                            <img className="center" src="/images/bg_toronto.jpg"/>
                         </div>
                         <ul className="section__halfContent">
                             <li className="section__halfContent--link">
