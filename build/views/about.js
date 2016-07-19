@@ -22,7 +22,7 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/about.scss');
 }
 
-//TODO: Remove JQuery dependencies
+//TODO: Remove JQuery dependencies 
 //TODO: Seperate scroll component that wraps ABOUT
 
 var About = function (_React$Component) {

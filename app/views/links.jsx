@@ -4,7 +4,7 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/links.scss');
 }
 
-export const Links = (props) => (
+const Links = (props) => (
 	<div className="mainContent__links" role="main">
         <div className="mainContent__linksContainer">
             <section className="links__content">
@@ -31,3 +31,5 @@ export const Links = (props) => (
         </div>
     </div>
 );
+
+export {Links as default};

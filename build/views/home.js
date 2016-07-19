@@ -24,7 +24,7 @@ if (process.env.BROWSER) {
 				require('stylesRoot/views/home.scss');
 }
 
-//TODO: Remove JQuery dependencies
+//TODO: Remove JQuery dependencies 
 //TODO: Seperate scroll component that wraps HOME
 
 var Home = function (_React$Component) {

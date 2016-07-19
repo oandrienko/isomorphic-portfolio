@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.Links = undefined;
+exports.default = undefined;
 
 var _react = require('react');
 
@@ -15,7 +15,7 @@ if (process.env.BROWSER) {
 	require('stylesRoot/views/links.scss');
 }
 
-var Links = exports.Links = function Links(props) {
+var Links = function Links(props) {
 	return _react2.default.createElement(
 		'div',
 		{ className: 'mainContent__links', role: 'main' },
@@ -64,3 +64,5 @@ var Links = exports.Links = function Links(props) {
 		)
 	);
 };
+
+exports.default = Links;

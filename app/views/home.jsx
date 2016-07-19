@@ -137,7 +137,7 @@ export default class Home extends React.Component {
                             <p>
                                 Whether it's building with the newest software library or keeping up with popular 
                                 tech trends - I'm always looking to learn something new. Check out some of my recent 
-                                <Link to="/projects">Projects</Link> here on my website.
+                            	<Link to="/projects">Projects</Link> here on my website.
                             </p>
                         </article>
                     </section>
