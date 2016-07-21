@@ -23,12 +23,8 @@ exports.default = {
         description: 'iOS and Android App “Star Slam”. Built with HTML5 Canvas and ' + 'Javascript. Was ported to mobile using Cordova and CocoonJS. Has ' + 'over 500 downloads from around the world through the Appstore and Google Play Store.',
         slug: 'star-slam',
         links: [{
-            title: 'Landing Page',
-            url: 'http://example.com',
-            color: '#6FFBFE'
-        }, {
             title: 'Google Play',
-            url: 'https://play.google.com/store/apps/details?id=com.olesandrienko.starslam&hl=en',
+            url: 'http://play.google.com/store/apps/details?id=com.olesandrienko.starslam&hl=en',
             color: '#6FFBFE'
         }]
     }, {
@@ -50,7 +46,7 @@ exports.default = {
         slug: 'webstore',
         links: [{
             title: 'Website',
-            url: 'http://andrienko.co/naturylbornkillers/',
+            url: 'http://naturylbornkillers.co',
             color: '#73513D'
         }]
     }]

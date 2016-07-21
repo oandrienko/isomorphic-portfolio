@@ -26,48 +26,51 @@ if (process.env.BROWSER) {
 	require('stylesRoot/components/modal.scss');
 }
 
-var ContactForm = function (_React$Component) {
-	_inherits(ContactForm, _React$Component);
+//TODO: finish this... Add frontend validation
+// Also need to make form a seperate controlled component
 
-	function ContactForm(props) {
-		_classCallCheck(this, ContactForm);
+// class ContactForm extends React.Component {
+// 	constructor(props) {
+// 		super();
+// 	}
+// }
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(ContactForm).call(this));
-	}
-
-	return ContactForm;
-}(_react2.default.Component);
-
-var ContactModal = function (_React$Component2) {
-	_inherits(ContactModal, _React$Component2);
+var ContactModal = function (_React$Component) {
+	_inherits(ContactModal, _React$Component);
 
 	function ContactModal(props) {
 		_classCallCheck(this, ContactModal);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(ContactModal).call(this));
+		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ContactModal).call(this));
+
+		_this.state = { message: '' };
+		return _this;
 	}
 
 	_createClass(ContactModal, [{
 		key: 'onSubmit',
 		value: function onSubmit(e) {
-			//TODO: finish this...
-
 			e.preventDefault();
 
-			var message = 'Thank you! Your message was sent.';
-			var data = $("#send-form").serialize();
+			var self = this,
+			    message = void 0,
+			    data = $("#send-form").serialize();
 			$.post('/mail/send', data).done(function (res) {
 				console.log("Data Sent: " + res);
-				if (res['success'] !== true) {
-					console.log('sucess is false...');
+				res = JSON.parse(res);
+				if (res.success !== true) {
 					message = 'Please fill in all fields properly and try again.';
+				} else {
+					message = 'Thank you! Your message was sent.';
+					$('#send-form').trigger('reset');
 				}
+				self.setState({ message: message });
 			});
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this3 = this;
+			var _this2 = this;
 
 			return _react2.default.createElement(
 				_reactModal2.default,
@@ -92,15 +95,19 @@ var ContactModal = function (_React$Component2) {
 					_react2.default.createElement(
 						'form',
 						{ id: 'send-form', onSubmit: function onSubmit(e) {
-								return _this3.onSubmit(e);
+								return _this2.onSubmit(e);
 							} },
 						_react2.default.createElement('input', { type: 'text', name: 'name', placeholder: 'Full Name', maxLength: '40' }),
 						_react2.default.createElement('input', { type: 'text', name: 'email', placeholder: 'Your Email', maxLength: '40' }),
 						_react2.default.createElement('input', { className: 'hidden', type: 'text', name: 'honey-email', value: '' }),
 						_react2.default.createElement('textarea', { name: 'message', placeholder: 'What you\'d like to send yo me.', rows: '5' }),
+						_react2.default.createElement(
+							'div',
+							{ id: 'under-text' },
+							this.state.message
+						),
 						_react2.default.createElement('input', { type: 'submit', value: 'Send Away', id: 'submit-button' })
-					),
-					_react2.default.createElement('div', { id: 'under-text' })
+					)
 				)
 			);
 		}

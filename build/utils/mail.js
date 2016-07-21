@@ -32,7 +32,7 @@ function sendAdminNotification(name, email, message, callback) {
       html = (0, _template2.default)({ name: name, email: email, message: message });
 
   var transporter = _nodemailer2.default.createTransport('SMTP', {
-    service: mailClient.service, //Gmail
+    service: mailClient.service,
     auth: {
       user: mailClient.user,
       pass: mailClient.pass

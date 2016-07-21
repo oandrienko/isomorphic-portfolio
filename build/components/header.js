@@ -94,7 +94,7 @@ var MainNav = function (_React$Component) {
 											null,
 											_react2.default.createElement(
 												'a',
-												{ href: '#lindedin', target: '_blank', className: 'tooltip__link blue' },
+												{ href: 'http://www.linkedin.com/in/oandrienko', target: '_blank', className: 'tooltip__link blue' },
 												'LinkedIn'
 											)
 										),
@@ -103,7 +103,7 @@ var MainNav = function (_React$Component) {
 											null,
 											_react2.default.createElement(
 												'a',
-												{ href: 'https://github.com/oandrienko', target: '_blank', className: 'tooltip__link purple' },
+												{ href: 'http://github.com/oandrienko', target: '_blank', className: 'tooltip__link purple' },
 												'Github'
 											)
 										),

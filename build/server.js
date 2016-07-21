@@ -79,16 +79,15 @@ app.all('/mail/send', function (req, res, next) {
       message = req.body.message;
 
   if (name && email && message) {
-    console.log('All vars defined... Calling sendMail');
     (0, _mail2.default)(name, email, message, function (data) {
-      res.status(200).send(JSON.stringify({
+      //res.setHeader('Content-Type', 'application/json');
+      res.send(JSON.stringify({
         success: true,
         data: data
       }));
     });
   } else {
-    console.log('NOT all vars defined... Calling next()');
-    res.status(400).send(JSON.stringify({
+    res.send(JSON.stringify({
       success: false,
       data: { message: 'Invalid Parameter' }
     }));

@@ -15,7 +15,7 @@ export default function sendAdminNotification(name, email, message, callback) {
   html = template({name:name, email:email, message:message});
 
   let transporter = nodemailer.createTransport('SMTP', {
-    service: mailClient.service, //Gmail
+    service: mailClient.service,
     auth: {
         user: mailClient.user,
         pass: mailClient.pass

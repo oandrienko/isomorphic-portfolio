@@ -61,7 +61,7 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false,
-        drop_console: false
+        drop_console: true
       },
       mangle: {
         except: ['$', 'webpackJsonp']
