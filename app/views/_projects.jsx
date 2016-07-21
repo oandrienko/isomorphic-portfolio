@@ -27,13 +27,8 @@ export default {
             slug: 'star-slam',
             links: [
                 {
-                    title: 'Landing Page', 
-                    url: 'http://example.com',
-                    color: '#6FFBFE'
-                },
-                {
                     title: 'Google Play', 
-                    url: 'https://play.google.com/store/apps/details?id=com.olesandrienko.starslam&hl=en',
+                    url: 'http://play.google.com/store/apps/details?id=com.olesandrienko.starslam&hl=en',
                     color: '#6FFBFE'
                 }
             ]
@@ -65,7 +60,7 @@ export default {
             links: [
                 {
                     title: 'Website',
-                    url: 'http://andrienko.co/naturylbornkillers/',
+                    url: 'http://naturylbornkillers.co',
                     color: '#73513D'
                 }
             ]

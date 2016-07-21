@@ -26,8 +26,8 @@ class MainNav extends React.Component {
 							<div className="mainNav__tooltip">
 							  <span className="mainNav__tooltip--text">
 							      <ul className="tooltip__links">
-							        <li><a href="#lindedin" target="_blank" className="tooltip__link blue">LinkedIn</a></li>
-							        <li><a href="https://github.com/oandrienko" target="_blank" className="tooltip__link purple">Github</a></li>
+							        <li><a href="http://www.linkedin.com/in/oandrienko" target="_blank" className="tooltip__link blue">LinkedIn</a></li>
+							        <li><a href="http://github.com/oandrienko" target="_blank" className="tooltip__link purple">Github</a></li>
 							        <li><a href="mailto:oandrien@uwaterloo.ca" target="_blank" className="tooltip__link orange">Email</a></li>
 							      </ul>
 							  </span>
