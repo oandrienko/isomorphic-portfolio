@@ -49,6 +49,7 @@ var routes = exports.routes = {
 	onChange: function onChange(prevState, nextState, replace) {
 		var newPath = nextState.location.pathname;
 		if (!/^\/projects\/[a-zA-Z0-9_.-]*$/.test(newPath)) window.scrollTo(0, 0);
+		window.ga('send', 'pageview', newPath);
 	},
 	childRoutes: [{
 		path: 'about',

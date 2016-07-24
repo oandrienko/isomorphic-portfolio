@@ -25,6 +25,7 @@ export let routes = {
 		let newPath = nextState.location.pathname;
 		if (!/^\/projects\/[a-zA-Z0-9_.-]*$/.test(newPath)) 
 			window.scrollTo(0, 0);
+		window.ga('send', 'pageview', newPath);
 	},
 	childRoutes: [
 		{

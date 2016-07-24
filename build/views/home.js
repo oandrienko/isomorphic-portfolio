@@ -193,7 +193,7 @@ var Home = function (_React$Component) {
                                 _react2.default.createElement(
                                     _reactRouter.Link,
                                     { to: '/projects' },
-                                    'Projects'
+                                    ' Projects'
                                 ),
                                 ' here on my website.'
                             )
@@ -216,7 +216,7 @@ var Home = function (_React$Component) {
                                 'Do you have a project that you need help with? Are you looking for a developer for your latest app idea? Do you need an engineer in training to add to your current team? Let\'s work on something awesome together, ',
                                 _react2.default.createElement(
                                     _reactRouter.Link,
-                                    { to: '/contact' },
+                                    { to: '/links' },
                                     'Contact Me'
                                 ),
                                 '.'
