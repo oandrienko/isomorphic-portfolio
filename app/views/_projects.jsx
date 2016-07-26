@@ -12,7 +12,7 @@ export default {
             links: [
                 {
                     title: 'Project Website',
-                    url: 'http://realty-suite.herokuapp.com',
+                    url: 'http://www.realtysuite.co',
                     color: '#FC662C'
                 }
             ]

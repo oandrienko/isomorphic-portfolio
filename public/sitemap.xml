@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+<url>
+  <loc>http://www.andrienko.co/</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.andrienko.co/about</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.andrienko.co/projects</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.andrienko.co/links</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.andrienko.co/projects/realy-suite</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.andrienko.co/projects/star-slam</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.andrienko.co/projects/livein-sites</loc>
+  <changefreq>monthly</changefreq>
+</url>
+<url>
+  <loc>http://www.andrienko.co/projects/webstore</loc>
+  <changefreq>monthly</changefreq>
+</url>
+</urlset>
