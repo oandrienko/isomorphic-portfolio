@@ -32,4 +32,4 @@ const Links = (props) => (
     </div>
 );
 
-export {Links as default};
+export default Links;

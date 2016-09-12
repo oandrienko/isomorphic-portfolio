@@ -30,33 +30,26 @@ if (process.env.BROWSER) {
 var Home = function (_React$Component) {
     _inherits(Home, _React$Component);
 
-    function Home(pros) {
+    function Home() {
         _classCallCheck(this, Home);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).call(this));
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
     }
 
     _createClass(Home, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log('Home => componentDidMount');
-
-            if ($('#home-video').get(0)) $('#home-video').get(0).play();
-
+            if ($('#home-video').get(0)) {
+                $('#home-video').get(0).play();
+            }
             $(window).on('scroll load', this.renderAnimation_bgFading);
             $(window).on('resize load', this.renderAnimation_bgSizing);
             this.renderAnimation_bgSizing();
             this.renderAnimation_bgFading();
         }
     }, {
-        key: 'componentWillUnmount',
-        value: function componentWillUnmount() {
-            console.log('Home => ***componentDidUnmount');
-        }
-    }, {
         key: 'renderAnimation_bgSizing',
         value: function renderAnimation_bgSizing() {
-
             var bgHeight,
                 bgWidth,
                 bgElements = $('.section__background img');
@@ -77,7 +70,6 @@ var Home = function (_React$Component) {
     }, {
         key: 'renderAnimation_bgFading',
         value: function renderAnimation_bgFading() {
-
             var st,
                 height,
                 transform,

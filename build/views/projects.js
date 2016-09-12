@@ -28,7 +28,7 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/projects.scss');
 }
 
-//TODO: setup MongoDB with simple API for projects
+//TODO: setup MongoDB with simple API for getting/setting projects
 
 var ProjectsItem = function ProjectsItem(props) {
     return _react2.default.createElement(
@@ -80,18 +80,11 @@ var Projects = function (_React$Component) {
     }
 
     _createClass(Projects, [{
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            console.log('Projects => componentDidMount');
-            console.log(this.props);
-        }
-    }, {
         key: 'changeProjectBanner',
         value: function changeProjectBanner(projectIndex) {
-            console.log('CHANGE BANNER CHANGE with INDEX: => ' + this.props.projects[projectIndex]);
-
-            if ($(window).width() < 768) $("html, body").animate({ scrollTop: 0 }, 400);
-
+            if ($(window).width() < 768) {
+                $("html, body").animate({ scrollTop: 0 }, 400);
+            }
             this.setState({
                 currentProject: this.props.projects[projectIndex]
             });
@@ -100,7 +93,11 @@ var Projects = function (_React$Component) {
         key: 'toggleHover',
         value: function toggleHover(i) {
             var newState = {};
-            if (this.state.bannerLinks[i]) this.state.bannerLinks[i] = !this.state.bannerLinks[i];else this.state.bannerLinks[i] = true;
+            if (this.state.bannerLinks[i]) {
+                this.state.bannerLinks[i] = !this.state.bannerLinks[i];
+            } else {
+                this.state.bannerLinks[i] = true;
+            }
             this.setState({ bannerLinks: this.state.bannerLinks });
         }
     }, {
@@ -208,7 +205,6 @@ var Projects = function (_React$Component) {
     return Projects;
 }(_react2.default.Component);
 
-exports.default = Projects;
-
-
 Projects.defaultProps = _projects3.default;
+
+exports.default = Projects;

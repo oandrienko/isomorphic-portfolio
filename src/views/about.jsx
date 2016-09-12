@@ -5,20 +5,15 @@ if (process.env.BROWSER) {
 }
 
 //TODO: Remove JQuery dependencies 
-//TODO: Seperate scroll component that wraps ABOUT
 
-export default class About extends React.Component {
-    constructor(pros) {
-        super();
-    }
+class About extends React.Component {
+
     componentDidMount() {
-        console.log('About => componentDidMount');
         $(window).on('scroll load', this.renderAnimation);
-        //window.addEventListener("scroll", this.renderEffect);
         this.renderAnimation();
     }
+
     renderAnimation() {
-        console.log('ABOUT SCROLL ANIMATION WENT');
         var section = $('.about__content'), st, height;
         var st = $(window).scrollTop();
         var height = section.height();
@@ -26,6 +21,7 @@ export default class About extends React.Component {
             'opacity': Math.pow( 1-st/height , 2),
         });
     }
+
     render() {
         return (
             <div className="mainContent__about" role="main">
@@ -54,4 +50,4 @@ export default class About extends React.Component {
     }
 }
 
-                   
+export default About;

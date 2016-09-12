@@ -61,4 +61,4 @@ export let routes = {
 			component: Links
 		},
 	]
-}
+};

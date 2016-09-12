@@ -8,31 +8,19 @@ if (process.env.BROWSER) {
 //TODO: Remove JQuery dependencies 
 //TODO: Seperate scroll component that wraps HOME
 
-export default class Home extends React.Component {
-	constructor(pros) {
-		super();
-	}
+class Home extends React.Component {
 
 	componentDidMount() {
-		console.log('Home => componentDidMount');
-
-        if ($('#home-video').get(0))
+        if ($('#home-video').get(0)) {
 		  $('#home-video').get(0).play();
-
+        }
 		$(window).on('scroll load', this.renderAnimation_bgFading);
 		$(window).on('resize load', this.renderAnimation_bgSizing);
 		this.renderAnimation_bgSizing();
 		this.renderAnimation_bgFading();
 	}
 
-	componentWillUnmount() {
-		console.log('Home => ***componentDidUnmount');
-
-	}
-
-
 	renderAnimation_bgSizing() {
-
 		var 
 		bgHeight,
 		bgWidth,
@@ -50,10 +38,9 @@ export default class Home extends React.Component {
 				'width' : bgWidth*1.2
 			});
 		});
-
 	}
-	renderAnimation_bgFading() {
 
+	renderAnimation_bgFading() {
 		var 
 		st,
 		height,
@@ -93,8 +80,7 @@ export default class Home extends React.Component {
 				}
 
 			}
-		}); 
-
+		});
 	}
 	render() {
         let width = typeof(window) == 'undefined' ? new Object() : window.innerWidth;
@@ -191,3 +177,4 @@ export default class Home extends React.Component {
 	}
 }
 
+export default Home;

@@ -66,7 +66,8 @@ app.use(_bodyParser2.default.json());
 
 /**
 * One route for sending mail from form, 
-* the other for React components from server.
+* the other for generating markup for React 
+* components on the server.
 */
 
 app.use(function (req, res, next) {

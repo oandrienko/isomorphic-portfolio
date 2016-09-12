@@ -23,29 +23,25 @@ if (process.env.BROWSER) {
 }
 
 //TODO: Remove JQuery dependencies 
-//TODO: Seperate scroll component that wraps ABOUT
 
 var About = function (_React$Component) {
     _inherits(About, _React$Component);
 
-    function About(pros) {
+    function About() {
         _classCallCheck(this, About);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(About).call(this));
+        return _possibleConstructorReturn(this, Object.getPrototypeOf(About).apply(this, arguments));
     }
 
     _createClass(About, [{
         key: 'componentDidMount',
         value: function componentDidMount() {
-            console.log('About => componentDidMount');
             $(window).on('scroll load', this.renderAnimation);
-            //window.addEventListener("scroll", this.renderEffect);
             this.renderAnimation();
         }
     }, {
         key: 'renderAnimation',
         value: function renderAnimation() {
-            console.log('ABOUT SCROLL ANIMATION WENT');
             var section = $('.about__content'),
                 st,
                 height;

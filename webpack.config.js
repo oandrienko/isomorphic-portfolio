@@ -6,8 +6,8 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const PATHS = {
   root: __dirname,
-  styles: path.join(__dirname, 'app/styles'),
-  app: path.join(__dirname, 'app'),
+  styles: path.join(__dirname, 'src/styles'),
+  app: path.join(__dirname, 'src'),
   build: path.join(__dirname, 'public/bundles')
 };
 

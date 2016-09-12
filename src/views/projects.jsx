@@ -7,7 +7,7 @@ if (process.env.BROWSER) {
     require('stylesRoot/views/projects.scss');
 }
 
-//TODO: setup MongoDB with simple API for projects
+//TODO: setup MongoDB with simple API for getting/setting projects
 
 const ProjectsItem = (props) => (
     <li className="project">
@@ -27,27 +27,20 @@ const ProjectsItem = (props) => (
     </li>
 );
 
-export default class Projects extends React.Component {
+class Projects extends React.Component {
+
 	constructor(props) {
 		super(props);
-
         this.state = {
             currentProject: props.projects[0],
             bannerLinks: {}
         }
 	}
-	componentDidMount() {
-		console.log('Projects => componentDidMount');
-        console.log(this.props);
-
-	}
 
     changeProjectBanner(projectIndex) {
-        console.log('CHANGE BANNER CHANGE with INDEX: => ' + this.props.projects[projectIndex] );
-
-        if ($(window).width() < 768)
+        if ($(window).width() < 768) {
             $("html, body").animate({ scrollTop: 0 }, 400);
-
+        }
         this.setState({
             currentProject: this.props.projects[projectIndex]
         });
@@ -55,10 +48,11 @@ export default class Projects extends React.Component {
 
     toggleHover(i) {
         let newState = {}; 
-        if (this.state.bannerLinks[i])
+        if (this.state.bannerLinks[i]) {
             this.state.bannerLinks[i] = !this.state.bannerLinks[i];
-        else 
+        } else {
             this.state.bannerLinks[i] = true;
+        }
         this.setState({bannerLinks: this.state.bannerLinks});
     }
 
@@ -133,5 +127,6 @@ export default class Projects extends React.Component {
 		);
 	}
 }
-
 Projects.defaultProps = _projects;
+
+export default Projects;
