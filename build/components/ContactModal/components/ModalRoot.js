@@ -44,7 +44,7 @@ var ModalRoot = function (_React$Component) {
 	function ModalRoot(props) {
 		_classCallCheck(this, ModalRoot);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ModalRoot).call(this));
+		var _this = _possibleConstructorReturn(this, (ModalRoot.__proto__ || Object.getPrototypeOf(ModalRoot)).call(this));
 
 		_this.state = { message: '' };
 		return _this;

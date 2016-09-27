@@ -34,7 +34,7 @@ var MainLayout = function (_React$Component) {
 	function MainLayout(props) {
 		_classCallCheck(this, MainLayout);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(MainLayout).call(this));
+		return _possibleConstructorReturn(this, (MainLayout.__proto__ || Object.getPrototypeOf(MainLayout)).call(this));
 	}
 
 	_createClass(MainLayout, [{

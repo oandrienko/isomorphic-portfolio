@@ -36,7 +36,7 @@ var MainNav = function (_React$Component) {
 	function MainNav() {
 		_classCallCheck(this, MainNav);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(MainNav).apply(this, arguments));
+		return _possibleConstructorReturn(this, (MainNav.__proto__ || Object.getPrototypeOf(MainNav)).apply(this, arguments));
 	}
 
 	_createClass(MainNav, [{
@@ -147,7 +147,7 @@ var MobileNavButton = function (_React$Component2) {
 	function MobileNavButton() {
 		_classCallCheck(this, MobileNavButton);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(MobileNavButton).apply(this, arguments));
+		return _possibleConstructorReturn(this, (MobileNavButton.__proto__ || Object.getPrototypeOf(MobileNavButton)).apply(this, arguments));
 	}
 
 	_createClass(MobileNavButton, [{
@@ -180,7 +180,7 @@ var MobileNavMenu = function (_React$Component3) {
 	function MobileNavMenu() {
 		_classCallCheck(this, MobileNavMenu);
 
-		return _possibleConstructorReturn(this, Object.getPrototypeOf(MobileNavMenu).apply(this, arguments));
+		return _possibleConstructorReturn(this, (MobileNavMenu.__proto__ || Object.getPrototypeOf(MobileNavMenu)).apply(this, arguments));
 	}
 
 	_createClass(MobileNavMenu, [{
@@ -260,7 +260,7 @@ var MainHeader = function (_React$Component4) {
 	function MainHeader(pros) {
 		_classCallCheck(this, MainHeader);
 
-		var _this4 = _possibleConstructorReturn(this, Object.getPrototypeOf(MainHeader).call(this));
+		var _this4 = _possibleConstructorReturn(this, (MainHeader.__proto__ || Object.getPrototypeOf(MainHeader)).call(this));
 
 		_this4.state = {
 			isMobileOpen: false,

@@ -70,7 +70,7 @@ var Projects = function (_React$Component) {
     function Projects(props) {
         _classCallCheck(this, Projects);
 
-        var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Projects).call(this, props));
+        var _this = _possibleConstructorReturn(this, (Projects.__proto__ || Object.getPrototypeOf(Projects)).call(this, props));
 
         _this.state = {
             currentProject: props.projects[0],

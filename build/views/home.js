@@ -33,7 +33,7 @@ var Home = function (_React$Component) {
     function Home() {
         _classCallCheck(this, Home);
 
-        return _possibleConstructorReturn(this, Object.getPrototypeOf(Home).apply(this, arguments));
+        return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
     }
 
     _createClass(Home, [{

@@ -36,7 +36,7 @@ var ContactModal = function (_React$Component) {
 	function ContactModal(props) {
 		_classCallCheck(this, ContactModal);
 
-		var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ContactModal).call(this));
+		var _this = _possibleConstructorReturn(this, (ContactModal.__proto__ || Object.getPrototypeOf(ContactModal)).call(this));
 
 		_this.state = { message: '' };
 		return _this;
