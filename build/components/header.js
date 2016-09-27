@@ -12,9 +12,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
-var _Modal = require('./Modal');
+var _modal = require('./modal');
 
-var _Modal2 = _interopRequireDefault(_Modal);
+var _modal2 = _interopRequireDefault(_modal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -352,7 +352,7 @@ var MainHeader = function (_React$Component4) {
 					}, onClick: function onClick() {
 						return _this6.toggleMobileNav();
 					}, mobileState: this.state.isMobileOpen }),
-				_react2.default.createElement(_Modal2.default, { modalIsOpen: this.state.modalIsOpen, closeModal: function closeModal() {
+				_react2.default.createElement(_modal2.default, { modalIsOpen: this.state.modalIsOpen, closeModal: function closeModal() {
 						return _this6.closeModal();
 					} })
 			);

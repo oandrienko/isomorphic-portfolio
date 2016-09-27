@@ -10,9 +10,9 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _Header = require('./Header');
+var _header = require('./header');
 
-var _Header2 = _interopRequireDefault(_Header);
+var _header2 = _interopRequireDefault(_header);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -59,7 +59,7 @@ var MainLayout = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'mainWrapper' },
-				_react2.default.createElement(_Header2.default, null),
+				_react2.default.createElement(_header2.default, null),
 				this.props.children,
 				_react2.default.createElement(
 					'footer',

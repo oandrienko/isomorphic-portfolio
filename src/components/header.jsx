@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 
- import ContactModal from './Modal';
+ import ContactModal from './modal';
  // import ContactModal from './ContactModal';
 
 if (process.env.BROWSER) {

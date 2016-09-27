@@ -1,6 +1,6 @@
 import React from 'react';
 
-import MainHeader from './Header';
+import MainHeader from './header';
 
 if (process.env.BROWSER) {
 	require('stylesRoot/components/layout.scss');
