@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { IndexRoute, Route, Link } from 'react-router';
 
-import MainLayout from './components/layout';
+import MainLayout from './components/Layout';
 
 import Home from './views/home';
 import Links from './views/links';

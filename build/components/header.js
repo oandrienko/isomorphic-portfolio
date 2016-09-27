@@ -12,9 +12,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouter = require('react-router');
 
-var _modal = require('./modal');
+var _Modal = require('./Modal');
 
-var _modal2 = _interopRequireDefault(_modal);
+var _Modal2 = _interopRequireDefault(_Modal);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -23,6 +23,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+// import ContactModal from './ContactModal';
 
 if (process.env.BROWSER) {
 	require('stylesRoot/components/header.scss');
@@ -350,7 +352,7 @@ var MainHeader = function (_React$Component4) {
 					}, onClick: function onClick() {
 						return _this6.toggleMobileNav();
 					}, mobileState: this.state.isMobileOpen }),
-				_react2.default.createElement(_modal2.default, { modalIsOpen: this.state.modalIsOpen, closeModal: function closeModal() {
+				_react2.default.createElement(_Modal2.default, { modalIsOpen: this.state.modalIsOpen, closeModal: function closeModal() {
 						return _this6.closeModal();
 					} })
 			);

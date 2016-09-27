@@ -15,9 +15,9 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouter = require('react-router');
 
-var _layout = require('./components/layout');
+var _Layout = require('./components/Layout');
 
-var _layout2 = _interopRequireDefault(_layout);
+var _Layout2 = _interopRequireDefault(_Layout);
 
 var _home = require('./views/home');
 
@@ -44,7 +44,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var routes = exports.routes = {
 	path: '/',
-	component: _layout2.default,
+	component: _Layout2.default,
 	indexRoute: { component: _home2.default },
 	onChange: function onChange(prevState, nextState, replace) {
 		var newPath = nextState.location.pathname;
