@@ -1,23 +1,59 @@
-import API from './../utils/bot';
+import async from 'async';
+import Bot from './../utils/bot';
 
-export const sendMessage = (message) => (dispatch) => {
-	dispatch(requestMessage());
-	return API.sendMessage(message).then( resolve => {
-		dispatch(receiveCard(resolve, listId));
-	});
-};
-
-const requestMessage = () => {
-	console.log('Requesting message....');
+const requestMessage = (user, message) => {
+	console.log('requestMessage dispatched');
 	return { 
-		type: 'REQUEST_DATA'
+		type: 'REQUEST_REPONSE',
+		user,
+		message
 	};
 };
 
 const receiveMessage = (response) => {
-	console.log('Received message!');
+	console.log('receiveMessage dispatched');
 	return {
-		type: 'RECEIVE_CARD',
+		type: 'RECEIVE_RESPONSE',
 		response
+	};
+};
+
+
+export const sendMessage = (user, message, context) => (dispatch) => {
+	dispatch(requestMessage(user, message));
+
+	return Bot.sendMessage(user, message, context).then(resolve => {
+		dispatch(receiveMessage(resolve));
+
+		//Keep sending requests until wit response type is 'stop';
+		let res_type = null;
+		async.whilst(
+			() => res_type !== 'stop', 
+			(next) => {
+				console.log('Calling Bot.pullMessage from async.whilst...');
+				Bot.pullMessage(user).then(resolve => {
+					if (resolve.type !== 'stop') {
+						if (resolve.confidence < 0.3)
+							resolve.msg = "Sorry, my sole purpose is to forward Oles inquiries. " +
+								"Would you like me to send something?";
+						dispatch(receiveMessage(resolve));
+					}
+					res_type = resolve.type;
+					next();
+				});
+			},
+			(error, n) => {
+				console.log('Done from async.whilst, with errors => ', error);
+			}
+		);
+
+	});
+};
+
+export const setUserId = (id) => {
+	console.log('Setting User Id...');
+	return {
+		type: 'SET_USER',
+		id
 	};
 };

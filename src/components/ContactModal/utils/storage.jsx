@@ -1,4 +1,29 @@
 
+
+export const getUserContext = () => {
+	try {
+		const user_context = localStorage.getItem('contactmodal_user_context');
+		if (user_uuid === null) {
+			return undefined;
+		}
+		return user_context;
+	} catch(error) {
+		return undefined;
+	}
+}
+
+export const getUserId = () => {
+	try {
+		const user_uuid = localStorage.getItem('contactmodal_user_uuid');
+		if (user_uuid === null) {
+			return undefined;
+		}
+		return user_uuid;
+	} catch(error) {
+		return undefined;
+	}
+}
+
 export const loadStoredState= () => {
 	//wrap in try catch as localStorage can be disabled.
 	try {

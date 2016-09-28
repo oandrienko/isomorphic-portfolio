@@ -40,8 +40,7 @@ class ModalRoot extends React.Component {
 					className="mainContact__modal"
 					isOpen={modalIsOpen}
 					onRequestClose={closeModal}
-					shouldCloseOnOverlayClick={true}
-				>
+					shouldCloseOnOverlayClick={true}>
 				
 					<ModalHeader closeModal={closeModal} />
 	            	<ChatWindow />

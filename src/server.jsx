@@ -7,12 +7,14 @@ import bodyParser from 'body-parser';
 import morgan from 'morgan';
 
 import React from 'react';
+import { Provider } from 'react-redux';
 import { renderToString } from 'react-dom/server';
 import { match, RouterContext } from 'react-router';
 import { routes } from './routes';
 
 import _titles from './_titles'
 import sendAdminNotification from './utils/mail'
+import configStore from './components/ContactModal/config';
 
 /**
 * Basic config
@@ -76,11 +78,18 @@ app.get('/*', (req, res, next) => {
       return res.status(404).render('error', {error: 'Not Found'});
 
       let title = _titles[req.url];
-      let markup = renderToString(<RouterContext {...renderProps} />);
+      let store = configStore();
+      // let state = escape(JSON.stringify(store.getState()));
+      let markup = renderToString(
+        <Provider store={store}>
+          <RouterContext {...renderProps} />
+        </Provider>
+      );
 
       res.status(200).render('index', {
         title: title,
-        markup: markup
+        markup: markup,
+        // store: store
       });
   });
 });

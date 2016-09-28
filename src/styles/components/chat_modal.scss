@@ -27,12 +27,21 @@
 	    background-color: #fefefe;
 	    border: 1px solid #ddd;
 	    box-shadow: 0 1px 5px 0 rgba(0,0,0,.3);
-	    overflow: scroll;
+	    overflow: hidden;
+
+	    display: flex;
+	    box-sizing: border-box;
+	    -webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	    flex-direction: column;
 
 	    .modal-header {
 	    	display: flex;
 		    justify-content: flex-start;
-		    padding: 7px;
+		    position: fixed;
+		    width: 100%;
+		    height: 38px;
+		    background: white;
 
 		    .close-button {
 		    	position: relative;
@@ -90,13 +99,19 @@
 		}
 
 		.chat-box {
-			display: flex;
+			// display: flex;
     		flex-direction: column;
 			border-top: 1px solid #ddd;
 		    padding: 15px 12px;
 		    min-height: 300px;
-		    max-height: 500px;
 		    overflow: auto;
+		    margin-top: 38px;
+
+		    .chat-empty {
+		    	text-align: center;
+		    	padding: 10px;
+		    	color: #aaa;
+		    }
 
 		    .chat-message {
 
@@ -137,8 +152,13 @@
 
 		    	.message-bubble {
 		    		box-sizing: border-box;
-		    		padding: 5px 10px;
+		    		padding: 7px 16px;
     				border-radius: 1.3em;
+    				max-width: 220px;
+		    	}
+
+		    	.sm-padding {
+		    		padding: 2px 10px;
 		    	}
 
 		    	.message-timestamp {
@@ -154,13 +174,13 @@
 		.chat-input {
 	    	border-top: 1px solid #ddd;
 			padding: 6px 5px;
-			height: 30px;
+			height: 38px;
 
 			.chat-input--fill {
 				-webkit-appearance: none;
 			    height: 100%;
 			    border: none;
-			    padding: 5px;
+			    padding: 0 0 0 10px;
 			    margin: 0;
 			    width: 85%;
 			    float: left;

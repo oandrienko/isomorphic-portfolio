@@ -87,8 +87,7 @@ var ModalRoot = function (_React$Component) {
 						className: 'mainContact__modal',
 						isOpen: modalIsOpen,
 						onRequestClose: closeModal,
-						shouldCloseOnOverlayClick: true
-					},
+						shouldCloseOnOverlayClick: true },
 					_react2.default.createElement(_ModalHeader2.default, { closeModal: closeModal }),
 					_react2.default.createElement(_ChatWindow2.default, null),
 					_react2.default.createElement(_ChatInput2.default, null)

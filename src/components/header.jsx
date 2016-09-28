@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
- import ContactModal from './modal';
- // import ContactModal from './ContactModal';
+ // import ContactModal from './modal';
+ import ContactModal from './ContactModal';
 
 if (process.env.BROWSER) {
 	require('stylesRoot/components/header.scss');
@@ -40,7 +40,7 @@ class MainNav extends React.Component {
 			        </div>
 		        </nav>
 
-		        <MobileNavButton onClick={this.props.onClick} mobileState={this.props.mobileState}/>
+		        <MobileNavButton onClick={this.props.onClick} mobileState={this.props.mobileState} contactName="Oles"/>
 
 	        </div>
 		);

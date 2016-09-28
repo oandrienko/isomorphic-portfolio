@@ -5,7 +5,6 @@ import configStore from './config';
 import ModalRoot from './components/ModalRoot';
 
 if (process.env.BROWSER) {
-	require('stylesRoot/components/modal.scss');
 	require('stylesRoot/components/chat_modal.scss');
 }
 

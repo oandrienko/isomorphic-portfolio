@@ -25,7 +25,6 @@ var _ModalRoot2 = _interopRequireDefault(_ModalRoot);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 if (process.env.BROWSER) {
-	require('stylesRoot/components/modal.scss');
 	require('stylesRoot/components/chat_modal.scss');
 }
 

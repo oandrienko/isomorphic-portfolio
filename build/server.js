@@ -28,6 +28,8 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRedux = require('react-redux');
+
 var _server = require('react-dom/server');
 
 var _reactRouter = require('react-router');
@@ -41,6 +43,10 @@ var _titles3 = _interopRequireDefault(_titles2);
 var _mail = require('./utils/mail');
 
 var _mail2 = _interopRequireDefault(_mail);
+
+var _config = require('./components/ContactModal/config');
+
+var _config2 = _interopRequireDefault(_config);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -100,7 +106,13 @@ app.get('/*', function (req, res, next) {
     if (error) return res.status(500).render('error', { error: error.message });else if (redirectLocation) return res.redirect(302, redirectLocation.pathname);else if (renderProps == null) return res.status(404).render('error', { error: 'Not Found' });
 
     var title = _titles3.default[req.url];
-    var markup = (0, _server.renderToString)(_react2.default.createElement(_reactRouter.RouterContext, renderProps));
+    var store = (0, _config2.default)();
+    // let state = escape(JSON.stringify(store.getState()));
+    var markup = (0, _server.renderToString)(_react2.default.createElement(
+      _reactRedux.Provider,
+      { store: store },
+      _react2.default.createElement(_reactRouter.RouterContext, renderProps)
+    ));
 
     res.status(200).render('index', {
       title: title,
