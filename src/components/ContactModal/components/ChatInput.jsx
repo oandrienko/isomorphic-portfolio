@@ -40,7 +40,7 @@ class ChatInput extends React.Component {
 
 		const {dispatch, context, onNewUserId, onNewMessage, onFormReset} = this.props;
 
-		let user = this.props.userId;
+		let user = this.props.userId, msg = data.message;
 
 		if (!user) {
 			// user = uuid.v4();
@@ -48,7 +48,8 @@ class ChatInput extends React.Component {
 			onNewUserId(user);
 		}
 
-		onNewMessage(user, data.message, context);
+		if (msg && msg.trim().length > 0)
+			onNewMessage(user, msg, context);
 		onFormReset();
 	}
 

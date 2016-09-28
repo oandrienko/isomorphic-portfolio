@@ -80,7 +80,8 @@ var ChatInput = function (_React$Component) {
 			var onFormReset = _props.onFormReset;
 
 
-			var user = this.props.userId;
+			var user = this.props.userId,
+			    msg = data.message;
 
 			if (!user) {
 				// user = uuid.v4();
@@ -88,7 +89,7 @@ var ChatInput = function (_React$Component) {
 				onNewUserId(user);
 			}
 
-			onNewMessage(user, data.message, context);
+			if (msg && msg.trim().length > 0) onNewMessage(user, msg, context);
 			onFormReset();
 		}
 	}, {
