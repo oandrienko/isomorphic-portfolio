@@ -32,9 +32,9 @@ export const sendMessage = (user, message, context) => (dispatch) => {
 			(next) => {
 				console.log('Calling Bot.pullMessage from async.whilst...');
 				Bot.pullMessage(user).then(resolve => {
-					if (resolve.type !== 'stop') {
+					if (resolve.type !== 'stop' || resolve.type !== 'action') {
 						if (resolve.confidence < 0.2)
-							resolve.msg = "Mmy sole purpose is to forward Oles inquiries. " +
+							resolve.msg = "My sole purpose is to forward Oles inquiries. " +
 								"Would you like me to him send something?";
 						dispatch(receiveMessage(resolve));
 					}
