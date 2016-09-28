@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var base = 'http://the-contact-bot.herokuapp.com/api/v1/';
+var base = 'https://the-contact-bot.herokuapp.com/api/v1/';
 
 exports.default = {
 	sendMessage: function sendMessage(user, message, context) {

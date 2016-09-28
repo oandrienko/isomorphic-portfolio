@@ -1,4 +1,4 @@
-const base = 'http://the-contact-bot.herokuapp.com/api/v1/';
+const base = 'https://the-contact-bot.herokuapp.com/api/v1/';
 
 export default {
 
