@@ -47,7 +47,7 @@ var sendMessage = exports.sendMessage = function sendMessage(user, message, cont
 				console.log('Calling Bot.pullMessage from async.whilst...');
 				_bot2.default.pullMessage(user).then(function (resolve) {
 					if (resolve.type !== 'stop') {
-						if (resolve.confidence < 0.3) resolve.msg = "Sorry, my sole purpose is to forward Oles inquiries. " + "Would you like me to send something?";
+						if (resolve.confidence < 0.2) resolve.msg = "Mmy sole purpose is to forward Oles inquiries. " + "Would you like me to him send something?";
 						dispatch(receiveMessage(resolve));
 					}
 					res_type = resolve.type;
