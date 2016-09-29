@@ -43,13 +43,14 @@ class ChatInput extends React.Component {
 		let user = this.props.userId, msg = data.message;
 
 		if (!user) {
-			// user = uuid.v4();
+			// user = uuid.v1();
+			user = new Date().toISOString();
 			console.log('user doesnt exist, creating new', user);
 			onNewUserId(user);
 		}
 
 		if (msg && msg.trim().length > 0)
-			onNewMessage(user, msg, context);
+			onNewMessage(user, msg);
 		onFormReset();
 	}
 

@@ -37,17 +37,20 @@ var sendMessage = exports.sendMessage = function sendMessage(user, message, cont
 		dispatch(requestMessage(user, message));
 
 		return _bot2.default.sendMessage(user, message, context).then(function (resolve) {
-			dispatch(receiveMessage(resolve));
+
+			if (resolve.msg && resolve.msg.length > 0) dispatch(receiveMessage(resolve));
 
 			//Keep sending requests until wit response type is 'stop';
 			var res_type = null;
 			_async2.default.whilst(function () {
 				return res_type !== 'stop';
 			}, function (next) {
-				console.log('Calling Bot.pullMessage from async.whilst...');
 				_bot2.default.pullMessage(user).then(function (resolve) {
-					if (resolve.type !== 'stop' || resolve.type !== 'action') {
-						if (resolve.confidence < 0.2) resolve.msg = "My sole purpose is to forward Oles inquiries. " + "Would you like me to him send something?";
+					if (resolve.type !== 'stop' && resolve.type !== 'action') {
+						// if (resolve.confidence < 0.02) {
+						// 	resolve.msg = "My sole purpose is to forward Oles inquiries. " +
+						// 		"Would you like me to him send something?";
+						// }
 						dispatch(receiveMessage(resolve));
 					}
 					res_type = resolve.type;
