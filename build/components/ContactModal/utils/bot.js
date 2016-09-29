@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var base = 'https://the-contact-bot.herokuapp.com/api/v1/';
+var base = 'http://the-contact-bot.herokuapp.com/api/v1/';
 // const base = 'http://localhost:8000/api/v1/';
 
 exports.default = {
