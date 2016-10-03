@@ -130,7 +130,7 @@ var MainNav = function (_React$Component) {
 						_react2.default.createElement(
 							'a',
 							{ onClick: this.props.openModal, id: 'mainModal__toggle', className: 'mainNav__contact--link' },
-							'Contact Now'
+							'Contact Bot'
 						)
 					)
 				),

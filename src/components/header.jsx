@@ -36,7 +36,7 @@ class MainNav extends React.Component {
 						</li>
 					</ul>
 				    <div className="mainNav__contact mainNav__contact--navRight">
-			            <a onClick={this.props.openModal} id="mainModal__toggle" className="mainNav__contact--link">Contact Now</a>
+			            <a onClick={this.props.openModal} id="mainModal__toggle" className="mainNav__contact--link">Contact Bot</a>
 			        </div>
 		        </nav>
 
