@@ -186,7 +186,7 @@ var Projects = function (_React$Component) {
                                     _react2.default.createElement(
                                         'h3',
                                         null,
-                                        'Projects'
+                                        'Recent Projects'
                                     )
                                 ),
                                 _react2.default.createElement(

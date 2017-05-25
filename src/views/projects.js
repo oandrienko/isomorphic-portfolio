@@ -113,7 +113,7 @@ class Projects extends React.Component {
                         <div className="section__container section__container--summary">
                             <div className="section__allProjects">
                                 <div className="allProjects__header">
-                                    <h3>Projects</h3>
+                                    <h3>Recent Projects</h3>
                                 </div>
                                 <ul className="allProjects__projectList">
                                 { projects }

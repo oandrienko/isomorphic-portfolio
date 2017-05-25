@@ -35,7 +35,7 @@ module.exports = {
         loader: 'style-loader!css-loader!postcss!sass-loader'
       },
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         ignore: /node_module/,
         loaders: ['babel?presets[]=react,presets[]=es2015,presets[]=react-hmre'],
       }

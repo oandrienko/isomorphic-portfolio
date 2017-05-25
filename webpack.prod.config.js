@@ -38,9 +38,9 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css!postcss!sass'),
       },
       {
-        test: /\.jsx$/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        loaders: ['babel?presets[]=react,presets[]=es2015']
       }
     ]
   },

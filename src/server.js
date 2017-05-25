@@ -22,7 +22,7 @@ import configStore from './components/ContactModal/config';
 
 let app = express();
 
-app.set('port', process.env.PORT || 8000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', path.join(__dirname, '../templates'));
 app.engine('hbs', exphbs.create({
   layoutsDir: app.get('views')
