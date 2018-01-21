@@ -15,17 +15,34 @@ export const projectsMap = {
 
     projects: [
         {
+            name: 'Joint Traffic Light and Sign Detection Paper',
+            type: 'Publication',
+            thumbnail: '/images/projects/tls-detection.jpg',
+            bgImageUrl: '/images/projects/tls-detection-banner.jpg',
+            description: 'During my work at the Waterloo Autonomous Vehicles lab, I worked on a Deep Learning' +
+                         ' method for detection traffic lights and signs simultaniously. We published our results' +
+                         ' to a local conference in Toronto.',
+            slug: 'sign-light-detection',
+            links: [
+                {
+                    title: 'Paper Details',
+                    url: 'http://more.andrienko.ca/tls-detection',
+                    color: '#8bb68b'
+                }
+            ]
+        },
+        {
             name: 'Realty Sheets Platform',
             type: 'Project',
             thumbnail: '/images/projects/realtor-suite.jpg',
             bgImageUrl: '/images/projects/realtor-suite-banner.jpg',
-            description: 'Realty Sheets is a technology platform for Realtos. The product helps ' +
+            description: 'Realty Sheets is a technology platform for Realtors. The product helps ' +
                          'Realtors automate the information request cycle and conregate data ' +
                          'on Open House visitors. Currently being tested with a small group of Realtors',
             slug: 'realty-sheets',
             links: [
                 {
-                    title: 'Realty Sheets',
+                    title: 'Product Landing Page',
                     url: 'http://www.realtysheets.com',
                     color: '#fc662c'
                 }

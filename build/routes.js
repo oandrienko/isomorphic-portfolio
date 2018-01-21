@@ -48,7 +48,7 @@ exports.default = {
         path: 'about',
         component: _AboutPage2.default
     }, {
-        path: 'work(/:name)',
+        path: 'projects(/:name)',
         component: _ProjectsPage2.default
     }, {
         path: 'links',

@@ -53,7 +53,7 @@ var MainNavigation = function MainNavigation(_ref) {
                     null,
                     _react2.default.createElement(
                         _reactRouter.Link,
-                        { className: 'mainNav__link mainNav__link--navCenter', to: '/work' },
+                        { className: 'mainNav__link mainNav__link--navCenter', to: '/projects' },
                         'Work'
                     )
                 ),
