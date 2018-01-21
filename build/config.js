@@ -1,54 +1,61 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+    value: true
 });
+var pagesTitles = exports.pagesTitles = {
 
-var _redux = require('redux');
+    '/': 'Oles Andrienko Personal Website',
 
-var _reduxThunk = require('redux-thunk');
+    '/about': 'About - Oles Andrienko',
 
-var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
+    '/projects': 'Projects - Oles Andrienko',
 
-var _contactModal = require('./reducers/contactModal');
+    '/links': 'Links - Oles Andrienko'
 
-var _contactModal2 = _interopRequireDefault(_contactModal);
-
-var _storage = require('./utils/storage');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var configureStore = function configureStore() {
-
-	//Get state from localStorage
-	//const persistedState = loadStoredState();
-	var persistedState = {
-		messages: [
-			// {
-			// 	user: 1,
-			// 	message: 'Hello',
-			// 	timestamp: 'Wed Sep 28 2016 12:20:58 AM'
-			// },
-			// {
-			// 	user: null,
-			// 	message: 'Hey! Thanks for stopping by.',
-			// 	timestamp: 'Wed Sep 28 2016 12:20:58 AM'
-			// },
-			// {
-			// 	user: null,
-			// 	message: 'Would you like to leave a message for Oles? I\'d be happy to forward it to him.',
-			// 	timestamp: 'Wed Sep 28 2016 12:20:58 AM'
-			// },
-		]
-	};
-
-	var store = (0, _redux.createStore)(_contactModal2.default, persistedState, (0, _redux.applyMiddleware)(_reduxThunk2.default));
-
-	// store.subscribe(() => {
-	// 	setStoredState(store.getState());
-	// });
-
-	return store;
 };
 
-exports.default = configureStore;
+var projectsMap = exports.projectsMap = {
+
+    projects: [{
+        name: 'Realty Sheets Platform',
+        type: 'Project',
+        thumbnail: '/images/projects/realtor-suite.jpg',
+        bgImageUrl: '/images/projects/realtor-suite-banner.jpg',
+        description: 'Realty Sheets is a technology platform for Realtos. The product helps ' + 'Realtors automate the information request cycle and conregate data ' + 'on Open House visitors. Currently being tested with a small group of Realtors',
+        slug: 'realty-sheets',
+        links: [{
+            title: 'Realty Sheets',
+            url: 'http://www.realtysheets.com',
+            color: '#fc662c'
+        }]
+    }, {
+        name: 'Gesture Presenter - Hack the North 2016',
+        type: 'Project',
+        thumbnail: '/images/projects/hack-the-north.jpg',
+        bgImageUrl: '/images/projects/hack-the-north-banner.jpg',
+        description: 'Participant of Canada\'s largest hackathon. Build a ' + 'Chrome Extension that sends webcam stream to a server ' + 'running OpenCV. After some image processing, the server ' + 'returns coordinates to allow control of Google Slides ' + 'using gestures.',
+        slug: 'hack-the-north-2016',
+        links: [{
+            title: 'Project Demo',
+            url: 'https://s3-us-west-2.amazonaws.com/andrienko/htn-2016.mp4',
+            color: '#d3d3d3'
+        }, {
+            title: 'Github Repo',
+            url: 'https://github.com/oandrienko/gesture-presenter',
+            color: '#d3d3d3'
+        }]
+    }, {
+        name: 'Star Slam Game',
+        type: 'Project',
+        thumbnail: '/images/projects/star-slam.jpg',
+        bgImageUrl: '/images/projects/star-slam-banner.jpg',
+        description: 'iOS and Android App “Star Slam”. Built with HTML5 Canvas and ' + 'Javascript. Was ported to mobile using Cordova and CocoonJS. Has ' + 'over 500 downloads from around the world through the Appstore and Google Play Store.',
+        slug: 'star-slam',
+        links: [{
+            title: 'Google Play Store',
+            url: 'http://play.google.com/store/apps/details?id=com.olesandrienko.starslam&hl=en',
+            color: '#6ffbfe'
+        }]
+    }]
+};

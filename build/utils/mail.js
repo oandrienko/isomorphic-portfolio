@@ -1,7 +1,7 @@
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 exports.default = sendAdminNotification;
 
@@ -19,36 +19,35 @@ var _template_raw2 = _interopRequireDefault(_template_raw);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function sendAdminNotification(name, email, message, callback) {
+function sendAdminNotification(message, callback) {
 
-  var mailClient = {
-    service: process.env.ANDRIENKOCO_MAIL_SERVICE,
-    user: process.env.ANDRIENKOCO_MAIL_USER,
-    pass: process.env.ANDRIENKOCO_MAIL_PASS
-  };
+    var mailClient = {
+        service: process.env.ANDRIENKOCA_MAIL_SERVICE,
+        user: process.env.ANDRIENKOCA_MAIL_USER,
+        pass: process.env.ANDRIENKOCA_MAIL_PASS
+    };
 
-  //the two template string exports
-  var text = (0, _template_raw2.default)({ name: name, email: email, message: message }),
-      html = (0, _template2.default)({ name: name, email: email, message: message });
+    //the two template string exports
+    var text = (0, _template_raw2.default)(message);
+    var html = (0, _template2.default)(message);
 
-  var transporter = _nodemailer2.default.createTransport('SMTP', {
-    service: mailClient.service,
-    auth: {
-      user: mailClient.user,
-      pass: mailClient.pass
-    }
-  });
+    var transporter = _nodemailer2.default.createTransport('SMTP', {
+        service: mailClient.service,
+        auth: {
+            user: mailClient.user,
+            pass: mailClient.pass
+        }
+    });
 
-  var mailOptions = {
-    from: mailClient.user,
-    to: 'andrienko@live.ca',
-    subject: '✔ Andrienko.co Contact Form',
-    text: text,
-    html: html
-  };
+    var mailOptions = {
+        from: mailClient.user,
+        to: 'andrienko@live.ca',
+        subject: '✔ Andrienko.ca Contact Form',
+        text: text,
+        html: html
+    };
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    var send = error ? error : info;
-    typeof callback === 'function' && callback(send);
-  });
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (typeof callback === 'function') callback(error || info);
+    });
 }

@@ -1,0 +1,24 @@
+/** -------------------------------------- **
+ *
+ *  MAIN ENTRY POINT FOR SITE STYLES
+ *
+ ** -------------------------------------- **/
+
+@import './base.scss';
+@import './variables.scss';
+
+/**
+ * Vendor styles
+ */
+@import './vendor/normalize.scss';
+@import './vendor/fonts.scss';
+
+/**
+ * Import all component styles.
+ */
+@import './modules/header.scss';
+@import './modules/layout.scss';
+@import './modules/home.scss';
+@import './modules/about.scss';
+@import './modules/projects.scss';
+@import './modules/links.scss';

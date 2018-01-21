@@ -2,8 +2,7 @@
 *  GLOBAL BASE STYLES
 */
 
-@import '~stylesRoot/vendor/normalize.scss';
-@import '~stylesRoot/variables.scss';
+@import './variables.scss';
 
 /* Root font size set */
 html, body,  #react-root{

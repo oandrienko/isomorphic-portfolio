@@ -1,0 +1,61 @@
+/**
+ * Build project for developement
+ *
+ * use "-p" flag to build front-end blade templates
+ * with server side rendered client code
+ */
+
+const path = require('path');
+const webpack = require('webpack');
+const WebpackDevServer = require('webpack-dev-server');
+const getWebpackConfig = require('./../webpack.config');
+
+// some arguments to the build
+const args = process.argv.slice(2);
+const isProd = args.indexOf('-p') !== -1;
+const isWatching = args.indexOf('-w') !== -1;
+// *** make sure this different than mobile env if doing dev ***
+const port = 8000;
+
+// lets call our config for server
+const webpackConfig = getWebpackConfig({
+    isProd,
+    globals: {
+        __DEVTOOLS__: !isProd
+    },
+    isWebpackDevServer: true,
+    port
+});
+
+const rootPath = path.join(__dirname, '..');
+webpack(webpackConfig, (err, stats) => {
+    if (err) {
+        console.warn(err);
+        if (!isWatching) {
+            process.exit(1);
+        }
+    } else {
+        console.log('[webpack log]', stats.toString());
+
+        const server = new WebpackDevServer(webpack(webpackConfig), {
+            stats: {
+                colors: true
+            },
+            publicPath: `http://localhost:${port}/static/`,
+            contentBase: path.join(rootPath, 'public'),
+            hot: true,
+            inline: true,
+            historyApiFallback: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+                'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+            }
+        });
+
+        server.listen(port, '0.0.0.0', () => {
+            console.log(`Starting up for Development, \
+                \nListening at localhost:${port}`);
+        });
+    }
+});

@@ -1,0 +1,112 @@
+/**
+*  'about' VIEW STYLES
+*/
+
+@import '~stylesRoot/variables.scss';
+
+.mainContent__about {
+  background: black;
+
+  .mainContent__aboutContainer {
+  	background: black;
+  	overflow: hidden;
+
+  	.about__background {
+      background: black;
+      position: fixed;
+      padding-top: 75px;
+      width: calc(100% - 44px);
+  	  margin: 0 auto;
+      height: calc(100vh - 97px);
+      min-height: calc(100vh - 97px);
+    }
+
+    .about__img {
+      background: black url(/images/about_bg.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+    }
+
+    .about__header {
+      display: table;
+      position: relative;
+      margin-top: 75px;
+      width: 100%;
+      height: calc(100vh - 97px);
+      min-height: calc(100vh - 97px);
+      text-align: center;
+
+      h2 {
+      	font-size: 8rem;
+      	display: table-cell;
+      	vertical-align: middle;
+        background: transparent;
+        color: white;
+      }
+    }
+
+    .about__content {
+      position: absolute;
+      padding-bottom: 100px;
+      margin: 0 auto;
+      border-radius: 0;
+      width: calc(100% - 44px);
+
+      .about__content--text {
+      	margin: 0 auto;
+      	padding: 20px;
+      	width: 70%;
+
+      	p {
+      		font-size: 1.5rem;
+        	font-weight: normal;
+      		color: white;
+      	}
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $desktop-size) { //width: calc(100% - 30px);
+
+  .mainContent__about {
+    .mainContent__aboutContainer {
+      .about__background {
+        width: calc(100% - 30px);
+      }
+      .about__header {
+        h2 {
+          font-size: 6rem;
+        }
+      }
+    }
+  }
+
+}
+
+@media screen and (max-width: $mobile-lg-size) { //width: 100%;
+
+    .mainContent__about {
+      .mainContent__aboutContainer {
+        .about__background {
+          width: 100%;
+        }
+        .about__header {
+          h2 {
+            font-size: 4rem;
+          }
+        }
+        .about__content {
+          width: 100%;
+          .about__content--text {
+
+            p {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+
+}

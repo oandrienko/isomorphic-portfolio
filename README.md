@@ -30,8 +30,8 @@ npm run start
 
 ## TODO
 
-*Remove JQuery dependancy. Mostly used for animations
-*Move projects to a database
-*Add loading screens inbetween transitions
-*Clean up code
-*Lazy load Project and About components
+* Remove JQuery dependancy. Mostly used for animations
+* Move projects to a database
+* Add loading screens inbetween transitions
+* Clean up code
+* Lazy load Project and About components

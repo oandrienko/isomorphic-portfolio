@@ -1,0 +1,47 @@
+/**
+ * Build for bundles without weboackDevServer
+ *
+ * use "-p" flag to build front-end blade templates
+ * with server side rendered client code
+ *
+ * use "-w" flag to debug the production build
+ */
+
+const webpack = require('webpack');
+const getWebpackConfig = require('./../webpack.config');
+
+// some arguments to the build
+const args = process.argv.slice(2);
+const isWatching = args.indexOf('-w') !== -1;
+const isProd = args.indexOf('-p') !== -1;
+// if checked, will enable server side rendering of static templates
+const isSsr = isProd;
+
+// lets call our config for dev
+console.log(`Starting ${isProd ? 'production' : 'development'} build...`);
+const webpackConfig = getWebpackConfig({
+    isProd,
+    isSsr,
+    bail: !isWatching,
+    globals: {
+        __DEVTOOLS__: !isProd
+    }
+});
+
+const cb = (err, stats) => {
+    if (err) {
+        console.warn(err);
+        if (!isWatching) {
+            process.exit(1);
+        }
+    } else {
+        console.log('[webpack log]', stats.toString());
+        console.log('Done!');
+    }
+};
+
+if (isWatching) {
+    webpack(webpackConfig).watch({}, cb);
+} else {
+    webpack(webpackConfig, cb);
+}

@@ -1,38 +1,37 @@
 import nodemailer from 'nodemailer';
-import template  from './template'
-import template_raw from './template_raw'
+import template from './template';
+import template_raw from './template_raw';
 
-export default function sendAdminNotification(name, email, message, callback) {
+export default function sendAdminNotification(message, callback) {
 
-  let mailClient = {
-    service: process.env.ANDRIENKOCO_MAIL_SERVICE,
-    user: process.env.ANDRIENKOCO_MAIL_USER,
-    pass: process.env.ANDRIENKOCO_MAIL_PASS
-  };
+    const mailClient = {
+        service: process.env.ANDRIENKOCA_MAIL_SERVICE,
+        user: process.env.ANDRIENKOCA_MAIL_USER,
+        pass: process.env.ANDRIENKOCA_MAIL_PASS
+    };
 
-  //the two template string exports
-  const text = template_raw({name:name, email:email, message:message}), 
-  html = template({name:name, email:email, message:message});
+    //the two template string exports
+    const text = template_raw(message);
+    const html = template(message);
 
-  let transporter = nodemailer.createTransport('SMTP', {
-    service: mailClient.service,
-    auth: {
-        user: mailClient.user,
-        pass: mailClient.pass
-    }
-  });
+    const transporter = nodemailer.createTransport('SMTP', {
+        service: mailClient.service,
+        auth: {
+            user: mailClient.user,
+            pass: mailClient.pass
+        }
+    });
 
-  let mailOptions = {
-      from: mailClient.user,
-      to: 'andrienko@live.ca',
-      subject: '✔ Andrienko.co Contact Form',
-      text: text, 
-      html: html,
-  };
+    const mailOptions = {
+        from: mailClient.user,
+        to: 'andrienko@live.ca',
+        subject: '✔ Andrienko.ca Contact Form',
+        text,
+        html
+    };
 
-  transporter.sendMail(mailOptions, function(error, info) {
-    let send = error ? error : info;
-    typeof callback === 'function' && callback(send);
-  });
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (typeof callback === 'function') callback(error || info);
+    });
 
 }

@@ -1,0 +1,404 @@
+/**
+*  'header' STYLES
+*/
+
+@import '~stylesRoot/variables.scss';
+
+.mainHeader {
+  position: fixed;
+  height: 75px;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 997;
+  background: white;
+
+  .mainHeader__inner {
+    height: 100%;
+    line-height: 75px;
+  }
+
+  .mainHeader__logo {
+    margin-left: 55px;
+
+    .mainHeader__mainTitle {
+      position: absolute;
+      color: white;
+      margin: 0;
+
+      .mainHeader__mainTitle--link {
+        font-size: 1.75rem;
+        transition: 0.2s;
+
+        &:hover {
+          color: grey;
+        }
+      }
+    }
+  }
+
+  .mainNav__links {
+    position: absolute;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+
+    .mainNav__link {
+      padding: 0 1.25rem;
+      font-size: 1.0rem;
+      letter-spacing: .2em;
+      cursor: pointer;
+
+      &:hover {
+        color: grey;
+        font-weight: 150;
+      }
+    }
+
+    li {
+      display: inline-block;
+      float: left;
+    }
+  }
+
+  .mainNav__links--navCenter {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mainNav__logo--navLeft {
+    float: left;
+  }
+
+  .mainNav__contact--navRight {
+    float: right;
+  }
+
+  .mainNav__contact {
+    height: 100%;
+    margin-right: 55px;
+    font-weight: 100;
+    cursor: pointer;
+  }
+
+  .mainNav__contact--link {
+    font-size: 1.75em;
+    transition: 0.2s;
+
+    &:hover {
+      color: grey;
+      cursor: url(/images/robot_hover.png) 30 20, auto;
+    }
+  }
+
+}
+
+@media screen and (max-width: $desktop-size) {
+
+  .mainHeader {
+    height: 55px;
+
+    .mainHeader__inner {
+      line-height: 55px;
+    }
+
+    .mainHeader__logo {
+      margin-left: 20px;
+    }
+
+    .mainNav__contact {
+      margin-right: 20px;
+
+    }
+  }
+
+}
+
+@media screen and (max-width: $tablet-size) {
+
+  .mainNav__links,
+  .mainNav__contact {
+    display: none;
+  }
+
+}
+
+
+
+/**
+* For the header toolTip on 'Links' menu item
+*/
+
+.mainNav__tooltip {
+  position: absolute;
+  display: block;
+  border-bottom: 1px dotted black;
+
+  .mainNav__tooltip--text {
+    visibility: hidden;
+    width: 130px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0px;
+    position: absolute;
+    text-align: left;
+    // z-index: 100;
+
+    .tooltip__links {
+      padding: 0;
+
+      li {
+        list-style: none ;
+        display: block !important;
+        float: none !important;
+        padding: 0;
+        padding-left: 25px;
+        line-height: 35px;
+      }
+
+      .tooltip__link {
+        color: white;
+
+        &:hover {
+          color: red;
+        }
+      }
+
+      .blue {
+        &:hover {
+          color: #add8e6;
+        }
+      }
+      .purple {
+        &:hover {
+          color: #e6add8;
+        }
+      }
+      .orange {
+        &:hover {
+          color: #e6bbad;
+        }
+      }
+
+    }
+  }
+}
+
+.mainNav__tooltip--text::after {
+  content: "";
+  position: absolute;
+  top: -9px;
+  left: 30%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent black transparent;
+}
+
+#tooltip:hover .mainNav__tooltip--text {
+  visibility: visible;
+}
+
+
+
+/**
+* Mobile toggle icon animations and styles
+*/
+
+.toggleNav {
+  display: none;
+  position: absolute;
+  height: 100%;
+  top: 0;
+  right: 0;
+  margin-right: 6px;
+  // z-index: 100;
+  cursor: pointer;
+}
+
+/*=========== BEFORE click ============*/
+
+.toggleNav__stackMenu {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 66px;
+  height: 66px;
+  font-size: 0;
+  text-indent: -9999px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover > span, 
+  &:hover > span::after, 
+  &:hover > span::before {
+    background: grey;
+  }
+
+  /*Middle line element*/
+  span {
+    display: block;
+    position: absolute;
+    top:30px;
+    left: 18px;
+    right: 18px;
+    height: 2px;
+    background: black;
+  }
+
+  /*Top and Bottom line elements*/
+  span::before,
+  span::after {
+    position: absolute;
+    display: block;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    content: "";
+
+  }
+
+  span::before {
+    top: -8px;
+  }
+
+  span::after {
+    bottom: -8px;
+  }
+
+}
+
+/*=========== AFTER click ============*/
+
+.toggleNav__stack-X {
+  background-color: transparent;
+
+  span,
+  span::before,
+  span::after {
+    transition: 0.3s 0s;
+  }
+
+  &.is-active {
+    background-color: transparent;
+  }
+
+  &.is-active span {
+    background: none;
+  }
+
+  &.is-active span::before {
+    top: 0;
+    transform: rotate(45deg);
+  }
+
+  &.is-active span::after {
+    bottom: 0;
+    transform: rotate(-45deg);
+  }
+
+}
+
+@media screen and (max-width: $tablet-size) {
+  .toggleNav { 
+    display: block;
+  }
+}
+
+
+
+/**
+* Mobile nav menu styles
+*/
+
+.navOverlay {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+  z-index: 990;
+  overflow-x: hidden;
+  text-align: center;
+  transition: 0.21s ease-in-out;
+  //background: rgba(16, 33, 53, 0.95);
+  background: rgba(0, 0, 0, 0.85);
+  // pointer-events: none;
+
+  &.is-active {
+    opacity: 1;
+    visibility: visible;
+    // pointer-events: auto;
+  }
+}
+
+.navOverlay__container {
+  position: relative;
+  display: table;
+  width: 100%;
+  min-height: 100%;
+
+    nav {
+      display: table-cell;
+      vertical-align: middle;
+      position: relative;
+      color:white;
+      font-size: 2.5rem;
+
+    }
+
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    li {
+      cursor:pointer;
+      padding-bottom: 1.3rem;
+
+      a {
+        color: white;
+        text-decoration: none;
+        transition:0.2s;
+        
+      }
+
+      a:hover {
+        font-size:1.8em;
+      }
+    }
+
+    .navOverlay__footer {
+      text-transform: none;
+      position: relative;
+      font-weight: 100;
+      font-size: 1.4rem;
+    }
+
+}
+
+@media screen and (max-width: $mobile-lg-size) {
+  .navOverlay {
+    width: 100%;
+  }
+}
